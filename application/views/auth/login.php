@@ -11,11 +11,11 @@
         <?= $this->session->flashdata('message') ?>
 
         <!-- Input Email -->
-        <div class="relative">
-            <i class="fa fa-envelope absolute text-primaryColor text-xl"></i>
+        <div class="relative outline-none">
+            <i class="fa fa-envelope absolute text-primaryColor text-xl outline-none"></i>
             <input type="text" id="email" name="email" value="<?= set_value('email'); ?>" placeholder="Email" class="pl-8 border-b-2 font-montserrat outline-none focus:outline-none focus:border-primaryColor transition-all duration-500 text-lg">
             <!-- Text Error -->
-            <small class="text-red-600 font-montserrat duration-300">
+            <small class="text-red-600 font-montserrat duration-300 ">
                 <?= form_error('email') ?>
             </small>
         </div>
@@ -28,9 +28,9 @@
                 <?= form_error('password') ?>
             </small>
         </div>
-        <div class="flex flex-row w-full mt-4 justify-between">
-            <a href="<?= base_url('auth/registration') ?>" class="right-0 text-gray-600 font-bold">Buat Akun</a>
-            <a href="#" class="left-0 text-gray-600 font-bold">Lupa Kata Sandi?</a>
+        <div class="flex flex-row w-full mt-4 justify-center">
+            <div class="text-gray-600 font-semibold">Tidak punya akun? <a href="<?= base_url('auth/registration') ?>" class=" text-gray-600 font-bold"> Buat Akun</a> </div>
+
         </div>
         <button type="submit" class="py-3 px-20 bg-primaryColor rounded-full text-white font-bold uppercase text-lg mt-4 transform hover:translate-y-1 transition-all duration-300">Masuk</button>
     </form>

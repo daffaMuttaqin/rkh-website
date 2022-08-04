@@ -13,6 +13,10 @@ class Auth extends CI_Controller
 	// login
 	public function index()
 	{
+		if ($this->session->userdata('email')) {
+			redirect('user');
+		}
+
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
 			'valid_email' => 'Email tidak Valid!',
 			'required' => 'Email harus diisi'
@@ -23,8 +27,10 @@ class Auth extends CI_Controller
 
 		if ($this->form_validation->run() == false) {
 			$data['title'] = 'Login Akun Pengguna';
-			$this->load->view('templates/auth_header', $data);
+
+			$this->load->view('templates/header', $data);
 			$this->load->view('auth/login');
+			$this->load->view('templates/footer', $data);
 		} else {
 			// validasi sukses
 			$this->_login();
@@ -51,18 +57,33 @@ class Auth extends CI_Controller
 					$this->session->set_userdata($data);
 					redirect('user');
 				} else {
-					$this->session->set_flashdata('message', '<div class="bg-red-500 p-3 mb-8 font-montserrat text-sm font-medium text-gray-800 rounded-md text-center">
-					Password salah!</div>');
+					$this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+					<svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+					<span class="sr-only">Info</span>
+					<div>
+					  <span class="font-medium">Password salah!</span>
+					</div>
+				  </div>');
 					redirect('auth');
 				}
 			} else {
-				$this->session->set_flashdata('message', '<div class="bg-red-500 p-3 mb-8 font-montserrat text-sm font-medium text-gray-800 rounded-md text-center">
-				Akun belum diaktivasi!</div>');
+				$this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+				<svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+				<span class="sr-only">Info</span>
+				<div>
+				  <span class="font-medium">Akun belum diaktivasi</span>
+				</div>
+			  </div>');
 				redirect('auth');
 			}
 		} else {
-			$this->session->set_flashdata('message', '<div class="bg-red-500 p-3 mb-8 font-montserrat text-sm font-medium text-gray-800 rounded-md text-center">
-			Akun tidak terdaftar!</div>');
+			$this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+			<svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+			<span class="sr-only">Info</span>
+			<div>
+			  <span class="font-medium">Akun tidak terdaftar!</span>
+			</div>
+		  	</div>');
 			redirect('auth');
 		}
 	}
@@ -70,6 +91,9 @@ class Auth extends CI_Controller
 	// registration
 	public function registration()
 	{
+		if ($this->session->userdata('email')) {
+			redirect('user');
+		}
 		$this->form_validation->set_rules('name', 'Name', 'required|trim', [
 			'required' => 'Nama harus diisi'
 		]);
@@ -78,25 +102,27 @@ class Auth extends CI_Controller
 			'is_unique' => 'Email sudah terdaftar!',
 			'required' => 'Email harus diisi'
 		]);
-		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]', [
 			'matches' => 'Kata sandi tidak sama!',
 			'min_length' => 'Kata sandi terlalu pendek!',
 			'required' => 'Password harus diisi'
 		]);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
-			'required' => 'Password harus diisi'
+			'required' => 'Password harus diisi',
+			'matches' => 'Kata sandi tidak sama!'
 		]);
 
 		if ($this->form_validation->run() == false) {
 			$data['title'] = 'Registrasi Akun Pengguna';
-			$this->load->view('templates/auth_header', $data);
+			$this->load->view('templates/header', $data);
 			$this->load->view('auth/registration');
+			$this->load->view('templates/footer', $data);
 		} else {
 			// Register sukses
 			$data = [
 				'name' => htmlspecialchars($this->input->post('name', true)),
 				'email' => htmlspecialchars($this->input->post('email', true)),
-				'image' => 'default.jpg',
+				'image' => 'default.png',
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
 				'is_active' => 1,
@@ -104,8 +130,13 @@ class Auth extends CI_Controller
 			];
 
 			$this->db->insert('user', $data);
-			$this->session->set_flashdata('message', '<div class="bg-green-500 p-3 mb-8 font-montserrat text-sm font-medium text-gray-800 rounded-md text-center">
-			Selamat!<br>Akun kamu sudah berhasil dibuat</div>');
+			$this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+			<svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+			<span class="sr-only">Info</span>
+			<div>
+			  <span class="font-medium">Akun kamu sudah berhasil dibuat!</span>
+			</div>
+		  	</div>');
 			redirect('auth');
 		}
 	}
@@ -115,8 +146,21 @@ class Auth extends CI_Controller
 		$this->session->unset_userdata('email');
 		$this->session->unset_userdata('role_id');
 
-		$this->session->set_flashdata('message', '<div class="bg-green-500 p-3 mb-8 font-montserrat text-sm font-medium text-gray-800 rounded-md text-center">
-		Kamu telah berhasil Logout</div>');
+		$this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+		<svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+		<span class="sr-only">Info</span>
+		<div>
+		  <span class="font-medium">Kamu telah berhasil keluar!</span>
+		</div>
+	  </div>');
 		redirect('auth');
+	}
+
+	public function blocked()
+	{
+		$data['title'] = 'Access Blocked';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$this->load->view('templates/header', $data);
+		$this->load->view('auth/blocked');
 	}
 }
