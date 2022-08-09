@@ -8,7 +8,9 @@ module.exports = {
       }
     },
     fontFamily: {
-      display: ["Nunito", "sans-serif"]
+      display: ["Nunito", "sans-serif",
+      "montserrat", "Montserrat",
+      "Dancing Script", "cursive"]
     }
   },
   plugins: [],

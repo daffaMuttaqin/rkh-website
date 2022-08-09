@@ -5,21 +5,21 @@
 
             <!-- KATEGORI -->
             <div class="lg:w-6/12 w-full lg:m-auto grid lg:grid-cols-2 grid-cols-1 text-center">
-                <div class="lg:px-2">
+                <div class="lg:px-2" data-aos="fade-right">
                     <a href="#brownies">
                         <button class="lg:w-full w-full mx-1 text-montserrat lg:text-xl text-base lg:p-4 p-2 my-1 m-auto bg-amber-800 rounded-xl text-white font-semibold hover:scale-105 duration-300">
                             Brownies
                         </button>
                     </a>
                 </div>
-                <div class="lg:px-2">
+                <div class="lg:px-2" data-aos="fade-left">
                     <a href="#cookies">
                         <button class="lg:w-full w-full mx-1 text-montserrat lg:text-xl text-base lg:p-4 p-2 my-1 m-auto bg-amber-800 rounded-xl text-white font-semibold hover:scale-105 duration-300">
                             Cookies
                         </button>
                     </a>
                 </div>
-                <div class="lg:col-span-2 lg:px-2">
+                <div class="lg:col-span-2 lg:px-2" data-aos="fade-up">
                     <a href="#pie">
                         <button class="lg:w-full w-full mx-1 text-montserrat lg:text-xl text-base lg:p-4 p-2 my-1 m-auto bg-amber-800 rounded-xl text-white font-semibold hover:scale-105 duration-300">
                             Pie
@@ -39,13 +39,14 @@
                 <div class="grid lg:grid-cols-4 grid-cols-1 gap-x-2 gap-y-7 text-center">
 
                     <?php
+                    $delay = 0;
                     $sql = "SELECT * FROM `tb_produk` WHERE `category` = ? ";
                     $produk  = $this->db->query($sql, array('Brownies'))->result();
                     ?>
 
                     <?php foreach ($produk as $pdk) : ?>
                         <!-- Produk 1 -->
-                        <div class="max-w-sm bg-white rounded-lg shadow-md">
+                        <div class="max-w-sm bg-white rounded-lg shadow-md" data-aos-delay="<?= $delay; ?>" data-aos="fade-right">
                             <a href="#">
                                 <div class="w-full h-96 m-auto">
                                     <img class="rounded-lg w-full h-full m-auto" src=" <?= base_url('assets/img/produk/') . $pdk->product_image ?> " />
@@ -62,6 +63,7 @@
                                 </div>
                             </div>
                         </div>
+                        <?php $delay += 100; ?>
 
                     <?php endforeach ?>
 
@@ -78,13 +80,14 @@
                 <div class="grid lg:grid-cols-4 grid-cols-1 gap-x-2 gap-y-7 text-center">
 
                     <?php
+                    $delay = 0;
                     $sql = "SELECT * FROM `tb_produk` WHERE `category` = ? ";
                     $produk  = $this->db->query($sql, array('Cookies'))->result();
                     ?>
 
                     <?php foreach ($produk as $pdk) : ?>
                         <!-- Produk 1 -->
-                        <div class="max-w-sm bg-white rounded-lg shadow-md">
+                        <div class="max-w-sm bg-white rounded-lg shadow-md" data-aos-delay="<?= $delay; ?>" data-aos="fade-right">
                             <a href="#">
                                 <div class="w-full h-96 m-auto">
                                     <img class="rounded-lg w-full h-full m-auto" src=" <?= base_url('assets/img/produk/') . $pdk->product_image ?> " />
@@ -101,6 +104,7 @@
                                 </div>
                             </div>
                         </div>
+                        <?php $delay += 100; ?>
 
                     <?php endforeach ?>
 
@@ -117,13 +121,14 @@
                 <div class="grid lg:grid-cols-4 grid-cols-1 gap-x-2 gap-y-7 text-center">
 
                     <?php
+                    $delay = 0;
                     $sql = "SELECT * FROM `tb_produk` WHERE `category` = ? ";
                     $produk  = $this->db->query($sql, array('Pie'))->result();
                     ?>
 
                     <?php foreach ($produk as $pdk) : ?>
                         <!-- Produk 1 -->
-                        <div class="max-w-sm bg-white rounded-lg shadow-md">
+                        <div class="max-w-sm bg-white rounded-lg shadow-md" data-aos-delay="<?= $delay; ?>" data-aos="fade-right">
                             <a href="#">
                                 <div class="w-full h-96 m-auto">
                                     <img class="rounded-lg w-full h-full m-auto" src=" <?= base_url('assets/img/produk/') . $pdk->product_image ?> " />
@@ -140,6 +145,7 @@
                                 </div>
                             </div>
                         </div>
+                        <?php $delay += 100; ?>
 
                     <?php endforeach ?>
 

@@ -3,7 +3,7 @@
         <h1 class="font-montserrat my-10 lg:my-20 text-xl lg:text-4xl text-center font-bold">Tentang Rumah Kue Haviyya</h1>
         <div class="lg:px-48 lg:mt-10 mt-5">
             <div class="w-full h-full px-4 shadow-md">
-                <img src=" <?= base_url('assets/img/logo.png') ?> " class="h-36 mx-auto">
+                <img src=" <?= base_url('assets/img/logo.png') ?> " class="h-36 mx-auto" data-aos="zoom-in">
 
                 <h1 class="font-montserrat font-bold text-sm lg:text-base">Rumah Kue Haviyya</h1>
 

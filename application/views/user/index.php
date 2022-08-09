@@ -9,16 +9,24 @@
             <div class="overflow-hidden relative h-56 sm:h-64 xl:h-screen 2xl:h-screen">
                 <!-- Item 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="<?= base_url('assets/img/kue1.jpg') ?>" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                    <img src="<?= base_url('assets/img/bg1.jpg') ?>" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" style="filter: blur(3px); -webkit-filter: blur(3px);">
                 </div>
                 <!-- Item 2 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="<?= base_url('assets/img/kue2.jpg') ?>" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                    <img src="<?= base_url('assets/img/bg2.jpg') ?>" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" style="filter: blur(3px); -webkit-filter: blur(3px);">
                 </div>
                 <!-- Item 3 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="<?= base_url('assets/img/kue3.jpg') ?>" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                    <img src="<?= base_url('assets/img/bg3.jpg') ?>" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" style="filter: blur(3px); -webkit-filter: blur(3px);">
                 </div>
+            </div>
+            <!-- LOGO DITENGAH SLIDER -->
+            <div class="flex flex-col absolute left-1/2 top-40 z-30 -translate-x-1/2">
+                <img src="<?= base_url('assets/img/logo.png') ?>" class="w-60 h-60 lg:block hidden">
+            </div>
+            <!-- TEXT DITENGAH SLIDER -->
+            <div class="flex flex-col absolute left-1/2 bottom-52 z-30 -translate-x-1/2">
+                <img src="<?= base_url('assets/img/font_white.png') ?>" class=" lg:block hidden">
             </div>
             <!-- Slider indicators -->
             <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
@@ -51,11 +59,11 @@
         <h1 class="font-montserrat my-10 lg:my-20 text-xl lg:text-4xl text-center font-bold">Rumah Kue Haviyya</h1>
 
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-2 w-full items-center">
-            <div>
+            <div data-aos="fade-right">
                 <img src=" <?= base_url('assets/img/kue3.jpg') ?> " class="lg:w-1/2 w-3/4 m-auto rounded-2xl">
             </div>
 
-            <div class="flex flex-col font-montserrat text-justify justify-between mt-4 lg:mt-0">
+            <div class="flex flex-col font-montserrat text-justify justify-between mt-4 lg:mt-0" data-aos="fade-left">
                 <div>
                     Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi,
                     dan tata letak. Maksud penggunaan lipsum adalah agar pengamat tidak terlalu berkonsentrasi kepada arti harfiah per kalimat, melainkan lebih kepada elemen desain
@@ -88,13 +96,14 @@
             <div class="grid lg:grid-cols-4 grid-cols-1 gap-x-2 gap-y-4 text-center">
 
                 <?php
+                $delay = 0;
                 $sql = "SELECT * FROM `tb_produk` WHERE `favorite` = ? ";
                 $produk  = $this->db->query($sql, array(1))->result();
                 ?>
 
                 <?php foreach ($produk as $pdk) : ?>
                     <!-- Produk 1 -->
-                    <div class="max-w-sm bg-white rounded-lg shadow-md">
+                    <div class="max-w-sm bg-white rounded-lg shadow-md" data-aos-delay="<?= $delay; ?>" data-aos="fade-right">
                         <a href="#">
                             <div class="w-full h-96 m-auto">
                                 <img class="rounded-lg w-full h-full m-auto" src=" <?= base_url('assets/img/produk/') . $pdk->product_image ?> " />
@@ -111,6 +120,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php $delay += 100; ?>
 
                 <?php endforeach ?>
 
