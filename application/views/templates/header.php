@@ -14,10 +14,15 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- FLOWBITE -->
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.2/dist/flowbite.min.css" />
+
+    <!-- TAILWIND MATERIAL -->
+    <link href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css" rel="stylesheet" />
 
     <!-- TAILWIND -->
     <script src="https://cdn.tailwindcss.com"></script>
+
 
     <!-- Tailwind Config -->
     <script>
@@ -41,7 +46,7 @@
     <!-- Style -->
     <style type="text/tailwindcss">
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Nunito:wght@300;400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&');
+        /* @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&'); */
     </style>
     <title> <?= $title; ?> </title>
 </head>
@@ -50,14 +55,18 @@
 <body x-data="{navbarOpen: false, scrolledFromTop: false}" @scroll.window="window.pageYOffset > 60 ? scrolledFromTop = true : scrolledFromTop = false" x-init="window.pageYOffset > 60 ? scrolledFromTop = true : scrolledFromTop = false" class="absolute">
     <!-- menu -->
     <header class="bg-amber-800 fixed z-50 w-full flex justify-between items-center px-4 md:px-12 h-24 shadow-lg transition-all duration-300" :class="{'h-24': !scrolledFromTop, 'h-12': scrolledFromTop}">
+        <!-- LOGO RUMAH KUE HAVIYYA -->
         <a href="#">
             <img src="<?php echo base_url('assets/img/logo.png') ?>" alt="Rumah Kue Haviyya Logo" class="h-16 lg:ml-20 transition-all duration-200" :class="{'h-16': !scrolledFromTop, 'h-9': scrolledFromTop}">
         </a>
 
-        <div>
-            <img src="<?php echo base_url('assets/img/font_white.png') ?>" class="h-44 mt-3 transition-all duration-200" :class="{'h-44': !scrolledFromTop, 'h-32': scrolledFromTop}">
-        </div>
+        <!-- TEXT UNFORGETTABLE TASTE -->
+        <!-- <div>
+            <img src="<?php // echo base_url('assets/img/font_white.png') 
+                        ?>" class="hidden lg:block h-44 mt-3 transition-all duration-200" :class="{'h-44': !scrolledFromTop, 'h-32': scrolledFromTop}">
+        </div> -->
 
+        <!-- MENU -->
         <nav>
             <button class="md:hidden" @click="navbarOpen = !navbarOpen">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -88,7 +97,7 @@
                         $querySubMenu = "   SELECT * FROM `user_sub_menu`
                                             WHERE `menu_id` = $menuId
                                             AND `is_active` = 1
-";
+                                        ";
                         $subMenu = $this->db->query($querySubMenu)->result_array();
                         ?>
 
@@ -173,13 +182,18 @@
                             </li>
 
                         <?php else : ?>
-
+                            <!-- MENU JIKA LOGIN -->
                             <li class="text-white hidden lg:block">
                                 |
                             </li>
 
                             <li>
-                                <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-h-12 h-12 rounded-full cursor-pointer" src="<?= base_url('assets/img/profil/') . $user['image'] ?>" alt="User dropdown" :class="{'w-12': !scrolledFromTop, 'w-9': scrolledFromTop, 'h-12': !scrolledFromTop, 'h-9': scrolledFromTop}">
+                                <button class="flex items-center space-x-3" id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start">
+                                    <img class="w-h-12 h-12 rounded-full cursor-pointer" src="<?= base_url('assets/img/profil/') . $user['image'] ?>" alt="User dropdown" :class="{'w-12': !scrolledFromTop, 'w-9': scrolledFromTop, 'h-12': !scrolledFromTop, 'h-9': scrolledFromTop}">
+                                    <div class="text-white">
+                                        <?= $user['name'] ?>
+                                    </div>
+                                </button>
 
                                 <!-- DROPDOWN MENU -->
                                 <div id="userDropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow ">
@@ -215,7 +229,7 @@
                 </a>
 
                 <!-- UP -->
-                <a href="#up" class="fixed hidden z-50 lg:bottom-0 bottom-20 lg:right-24 right-0 lg:mr-8 lg:mb-8 mr-4 mb-4 hover:scale-110 transition-all duration-300" :class="{'hidden': !scrolledFromTop, 'block': scrolledFromTop}" data-aos="fade-up" data-aos-delay="2000">
+                <a href="#up" class="fixed hidden z-50 lg:bottom-0 bottom-20 lg:right-24 right-0 lg:mr-8 lg:mb-8 mr-4 mb-4 hover:scale-110 transition-all duration-300" :class="{'hidden': !scrolledFromTop, 'block': scrolledFromTop}" data-aos="fade-up" data-aos-once="false">
                     <div class="flex w-16 lg:w-20 h-16 lg:h-20 bg-gray-800 rounded-full items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
@@ -229,6 +243,3 @@
 
     </header>
 </body>
-
-
-</html>

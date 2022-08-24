@@ -20,7 +20,7 @@
             <!-- PERULANGAN -->
             <?php foreach ($semua_produk as $spdk) : ?>
                 <!-- FORM -->
-                <form class="space-y-6" action="<?= base_url('admin/update_semua_produk'); ?>" method="post" enctype="multipart/form-data">
+                <form class="space-y-6" action="<?= base_url('admin/update_semua_produk/') . $spdk->id; ?>" method="post" enctype="multipart/form-data">
                     <div>
                         <input type="hidden" name="id" id="id" value="<?= $spdk->id ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                     </div>
@@ -59,7 +59,7 @@
 
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="product_image">Foto Produk</label>
-                        <input class="block mb-5 w-full text-xs text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" value="<?= $spdk->product_image ?>" name="product_image" id="product_image" type="file">
+                        <input class="block mb-5 w-full text-xs text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="product_image" id="product_image" type="file">
                     </div>
 
                     <div class="flex w-full">

@@ -16,6 +16,8 @@ class Admin extends CI_Controller
     }
     public function index()
     {
+        $data['review_detail'] = $this->model_produk->tampil_data_review_detail()->result();
+        $data['review'] = $this->model_produk->tampil_data_review()->result();
         $data['semua_user'] = $this->model_produk->tampil_data_user()->result();
         $data['semua_produk'] = $this->model_produk->tampil_data_semua_produk()->result();
         $data['title'] = 'Admin';
@@ -94,10 +96,23 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer', $data);
     }
 
+    public function edit_testimoni($id)
+    {
+        $where = array('id' => $id);
+        $data['review'] = $this->model_produk->edit_testimoni($where, 'tb_review')->result();
+
+        $data['title'] = 'Edit Testimoni';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('admin/editTestimoni', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
 
     public function update_semua_produk()
     {
-        $data['semua_produk'] = $this->model_produk->tampil_data()->row_array();
+        $data['semua_produk'] = $this->model_produk->tampil_data_semua_produk()->row_array();
 
         $id             = $this->input->post('id');
         $product_name   = $this->input->post('product_name');
@@ -115,7 +130,7 @@ class Admin extends CI_Controller
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('product_image')) {
-                $old_image = $data['produk']['product_image'];
+                $old_image = $data['tb_produk']['product_image'];
                 unlink(FCPATH . 'assets/img/produk/' . $old_image);
                 $new_image = $this->upload->data('file_name');
             } else {
@@ -149,7 +164,7 @@ class Admin extends CI_Controller
 
     public function update_user()
     {
-        $data['semua_user'] = $this->model_produk->tampil_data()->row_array();
+        $data['semua_user'] = $this->model_produk->tampil_data_user()->row_array();
 
         $id             = $this->input->post('id');
         $name           = $this->input->post('name');
@@ -179,6 +194,54 @@ class Admin extends CI_Controller
         redirect('admin');
     }
 
+    public function update_testimoni()
+    {
+        $data['review'] = $this->model_produk->tampil_data_review()->row_array();
+
+        $id             = $this->input->post('id');
+        $name           = $this->input->post('name');
+        $review         = $this->input->post('review');
+        $favorite       = $this->input->post('favorite');
+
+        $image_review   = $_FILES['image_review']['name'];
+
+        if ($image_review) {
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['upload_path'] = './assets/img/testimoni/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('image_review')) {
+                $old_image = $data['tb_review']['image_review'];
+                unlink(FCPATH . 'assets/img/testimoni/' . $old_image);
+                $new_image = $this->upload->data('file_name');
+            } else {
+                echo $this->upload->display_errors();
+            }
+        }
+
+        $data = array(
+            'name'              => $name,
+            'review'            => $review,
+            'image_review'      => $new_image,
+            'favorite'          => $favorite
+        );
+
+        $where = array(
+            'id'    => $id
+        );
+
+        $this->model_produk->update_data($where, $data, 'tb_review');
+        $this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+                    <svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                    <span class="font-medium">Data berhasil diubah!</span>
+                    </div>
+                    </div>');
+        redirect('admin');
+    }
+
     public function hapus_produk($id)
     {
         $where = array('id' => $id);
@@ -202,6 +265,34 @@ class Admin extends CI_Controller
                     <span class="sr-only">Info</span>
                     <div>
                     <span class="font-medium">Data user berhasil diubah!</span>
+                    </div>
+                    </div>');
+        redirect('admin');
+    }
+
+    public function hapus_testimoni($id)
+    {
+        $where = array('id' => $id);
+        $this->model_produk->hapus_data($where, 'tb_review');
+        $this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+                    <svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                    <span class="font-medium">Testimoni berhasil dihapus!</span>
+                    </div>
+                    </div>');
+        redirect('admin');
+    }
+
+    public function hapus_testimoni_detail($id)
+    {
+        $where = array('id_review' => $id);
+        $this->model_produk->hapus_data($where, 'tb_review_detail');
+        $this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+                    <svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                    <span class="font-medium">Testimoni berhasil dihapus!</span>
                     </div>
                     </div>');
         redirect('admin');

@@ -13,14 +13,14 @@
 
 <body class="w-full h-full" id="up">
     <div class="pt-24">
-        <div class="relative w-full px-10 lg:px-20 mt-20 justify-items-center">
+        <div class="relative lg:w-1/2 w-full m-auto px-10 lg:px-20 mt-20 justify-items-center">
             <h1 class="font-montserrat my-10 lg:my-20 text-xl lg:text-4xl text-center font-bold">Profil Saya</h1>
 
-            <div class="w-1/2 m-auto text-center">
+            <div class="w-full m-auto text-center">
                 <?= $this->session->flashdata('message'); ?>
             </div>
 
-            <div class="max-w-sm m-auto bg-white rounded-lg border border-gray-200 shadow-md">
+            <div class=" w-full m-auto bg-white rounded-lg border border-gray-200 shadow-md">
                 <div class="flex justify-end px-4 pt-4">
                     <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg text-sm p-1.5" type="button">
                         <span class="sr-only">Open dropdown</span>
@@ -40,15 +40,62 @@
                         </ul>
                     </div>
                 </div>
-                <div class="flex flex-col items-center pb-10">
+                <div class="flex items-center pb-10">
+                    <div class="p-3 ml-5 rounded bg-gray-100">
+                        <img class="mb-3 w-56 h-56 rounded-lg" src=" <?= base_url('assets/img/profil/') . $user['image'] ?>" alt="Bonnie image" />
+                    </div>
 
-                    <img class="mb-3 w-56 h-56 rounded-full shadow-lg" src=" <?= base_url('assets/img/profil/') . $user['image'] ?>" alt="Bonnie image" />
-                    <h5 class="mb-1 text-xl font-medium text-gray-900"> <?= $user['name'] ?> </h5>
-                    <span class="text-sm text-gray-900"> <?= $user['email'] ?> </span>
-                    <span class="text-sm text-gray-800 mt-1"> Member mulai dari <?= date('d F Y', $user['date_created']) ?> </span>
+                    <div class="flex flex-col p-5 space-y-3">
+                        <div>
+                            <h1 class="font-montserrat font-bold text-gray-600 text-lg">Nama</h1>
+                            <span class="font-montserrat"> <?= $user['name'] ?> </span>
+                        </div>
+                        <div>
+                            <h1 class="font-montserrat font-bold text-gray-600 text-lg">Email</h1>
+                            <span class="font-montserrat"> <?= $user['email'] ?> </span>
+                        </div>
+                        <div>
+                            <h1 class="font-montserrat font-bold text-gray-600 text-lg">Member</h1>
+                            <span class="font-montserrat"> Member mulai dari <?= date('d F Y', $user['date_created']) ?> </span>
+                        </div>
+                    </div>
 
                 </div>
+
+
             </div>
+            <h1 class="text-xl font-montserrat mt-4 font-semibold text-amber-800">Testimoni</h1>
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-2 gap-y-7 bg-gray-50">
+
+                <?php
+                $delay = 0;
+                $sql = "SELECT * FROM `tb_review` WHERE `name` = ? ";
+                $review  = $this->db->query($sql, array($user['name']))->result();
+                ?>
+
+                <?php foreach ($review as $rv) : ?>
+
+                    <div class="w-full p-3 flex flex-col justify-between shadow-lg rounded-xl text-center">
+                        <div class="pb-2 m-auto">
+                            <img class="w-56 h-56 rounded" src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" alt="Large avatar">
+                        </div>
+                        <p class="mb-2 font-montserrat">
+                            <?= $rv->review ?>
+                        </p>
+
+                        <div class="pb-2">
+                            <p class="text-xs">Diposting pada <?= date('d F Y', $rv->posting_time) ?></p>
+                        </div>
+
+                        <div>
+                            <?= anchor('user/hapus_testimoni/' . $rv->id, '<button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>') ?>
+                        </div>
+                    </div>
+                    <?php $delay += 100; ?>
+                <?php endforeach ?>
+
+            </div>
+
 
         </div>
     </div>

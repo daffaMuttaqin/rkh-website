@@ -94,6 +94,146 @@
                     </table>
                 </div>
             </div>
+
+            <!-- TESTIMONI -->
+            <div class="my-10 lg:mt-20">
+                <h1 class="lg:mb-5 font-montserrat text-base lg:text-2xl font-bold">Testimoni</h1>
+
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-800 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">
+                                    No
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Nama
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Testimoni
+                                </th>
+                                <th scope="col" class="py-3 px-6 text-center">
+                                    Waktu
+                                </th>
+                                <th scope="col" class="py-3 px-6 text-center">
+                                    Favorite
+                                </th>
+                                <th scope="col" class="py-3 px-6 text-center">
+                                    Aksi
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!-- FOREACH -->
+                            <?php
+                            $no = 1;
+                            foreach ($review as $rv) : ?>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="py-4 px-6">
+                                        <?= $no++ ?>
+                                    </td>
+                                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <?= $rv->name ?>
+                                    </th>
+                                    <td class="py-4 px-6">
+                                        <?= $rv->review ?>
+                                    </td>
+                                    <td class="py-4 px-6 text-center">
+                                        <?= date('d F Y', $rv->posting_time) ?>
+                                    </td>
+                                    <td class="py-4 px-6 text-center">
+                                        <?= $rv->favorite ?>
+                                    </td>
+                                    <td class="py-4 px-6 justify-center items-center flex">
+                                        <div>
+                                            <?= anchor('admin/edit_testimoni/' . $rv->id, '<button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900">Edit</button>') ?>
+                                        </div>
+                                        <div>
+                                            <?= anchor('admin/hapus_testimoni/' . $rv->id, '<button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>') ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <!-- END FOREACH -->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--    TESTIMONI
+                    DETAIL
+            -->
+            <div class="my-10 lg:mt-20">
+                <h1 class="lg:mb-5 font-montserrat text-base lg:text-2xl font-bold">Testimoni Produk</h1>
+
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-800 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">
+                                    No
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Nama
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Produk
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Testimoni
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Waktu
+                                </th>
+                                <!-- <th scope="col" class="py-3 px-6 text-center">
+                                    Favorite
+                                </th> -->
+                                <th scope="col" class="py-3 px-6 text-center">
+                                    Aksi
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!-- FOREACH -->
+                            <?php
+                            $no = 1;
+                            foreach ($review_detail as $rvd) : ?>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="py-4 px-6">
+                                        <?= $no++ ?>
+                                    </td>
+                                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <?= $rvd->name ?>
+                                    </th>
+                                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <?= $rvd->product_name ?>
+                                    </th>
+                                    <td class="py-4 px-6">
+                                        <?= $rvd->review ?>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <?= date('d F Y', $rvd->posting_time) ?>
+                                    </td>
+                                    <!-- <td class="py-4 px-6 text-center">
+                                        $rvd->favorite
+                                    </td> -->
+                                    <td class="py-4 px-6 justify-center items-center flex">
+                                        <div>
+                                            <?= anchor('admin/hapus_testimoni_detail/' . $rvd->id_review, '<button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>') ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <!-- END FOREACH -->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <!-- 
                     SEMUA
                     PRODUK

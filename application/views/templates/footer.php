@@ -17,7 +17,7 @@
             <div class="flex flex-col mt-14 font-montserrat font-normal text-sm text-left">
                 <div class="font-montserrat text-base font-extrabold pb-2">Rumah Kue Haviyya</div>
                 <a href="<?= base_url('user/tentang') ?>" class="pb-2 w-fit text-sm hover:scale-110 duration-300">Tentang</a>
-                <a href="#" class="w-fit text-sm hover:scale-110 duration-300">Kontak</a>
+                <a href="<?= base_url('user/testimoni') ?>" class="w-fit text-sm hover:scale-110 duration-300">Testimoni</a>
             </div>
             <div class="flex flex-col mt-14 font-montserrat font-normal text-sm text-left">
                 <div class="font-montserrat text-base font-extrabold pb-2">Produk</div>
@@ -69,13 +69,23 @@
     </div>
 </div>
 
+<!-- AOS -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
     AOS.init({
         once: true,
-        duration: 800,
+        duration: 600,
     });
 </script>
 
+<!-- FLOWBITE -->
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+<!-- <script src="https://unpkg.com/flowbite@1.5.2/dist/flowbite.js"></script> -->
+
+<!-- TAILWIND MATERIAL -->
+<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
+
 </body>
+
+
+</html>
