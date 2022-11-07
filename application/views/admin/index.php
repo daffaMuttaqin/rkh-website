@@ -13,11 +13,97 @@
 <?php endif ?>
 
 <body class="w-full h-full" id="up">
+    <!-- TETIMONI FLOATING ICON -->
+    <a href="<?= base_url('admin/tambah_pesanan') ?>" class="fixed flex items-center z-50 lg:bottom-24 bottom-40 right-0 lg:mr-8 lg:mb-8 mr-4 mb-4 duration-300" data-aos="fade-down">
+        <img src=" <?= base_url('/assets/img/checklist.png') ?> " alt="" class="w-16 md:w-16 lg:w-20 hover:scale-110 duration-300">
+    </a>
     <div class="pt-24">
         <div class="relative w-full px-10 lg:px-20 mt-20 justify-items-center">
+
             <h1 class="font-montserrat my-10 lg:my-20 text-xl lg:text-4xl text-center font-bold">Admin</h1>
 
             <?= $this->session->flashdata('message') ?>
+
+            <!-- Acc Review User -->
+            <div class="my-10 lg:mt-20">
+                <h1 class="lg:mb-5 font-montserrat text-base lg:text-2xl font-bold">Review Belum Disetujui Admin</h1>
+
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-800 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">
+                                    No
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Nama
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Nama Kue
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Review
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Gambar Review
+                                </th>
+                                <th scope="col" class="py-3 px-6 text-center">
+                                    Waktu
+                                </th>
+                                <th scope="col" class="py-3 px-6 text-center">
+                                    Aksi
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                            // $sql = "SELECT * FROM `tb_review_detail` WHERE `agree` = 0 ";
+                            // $review_detail_acc  = $this->db->query($sql)->result();
+                            ?>
+                            <!-- FOREACH -->
+                            <?php
+                            $no = 1;
+                            foreach ($review_detail_acc as $rvdd) : ?>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="py-4 px-6">
+                                        <?= $no++ ?>
+                                    </td>
+                                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <?= $rvdd->name ?>
+                                    </th>
+                                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <?= $rvdd->product_name ?>
+                                    </th>
+                                    <td class="py-4 px-6">
+                                        <?= $rvdd->review ?>
+                                    </td>
+                                    <td class="py-4 px-6 text-center">
+                                        <img class="w-20 h-20 rounded" src="<?= base_url('assets/img/testimoni/') . $rvdd->image_review ?>" alt="Large avatar">
+                                    </td>
+                                    <td class="py-4 px-6 text-center">
+                                        <?= date('d F Y', $rvdd->posting_time) ?>
+                                    </td>
+                                    <td>
+                                        <a href="<?= base_url('admin/terima_testimoni/') . $rvdd->id_review ?>">
+                                            <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900">Terima</button>
+                                        </a>
+
+                                        <a href="<?= base_url('admin/tolak_testimoni/') . $rvdd->id_review ?>">
+                                            <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Tolak</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <!-- END FOREACH -->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
 
             <!-- 
                     TABEL

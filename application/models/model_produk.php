@@ -33,6 +33,16 @@ class Model_produk extends CI_Model
         return $query;
     }
 
+    public function tampil_data_review_detail_acc()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_review_detail');
+        $this->db->where('agree = 0');
+        $this->db->join('tb_produk', 'tb_produk.id = tb_review_detail.id_product', 'left');
+        $query = $this->db->get();
+        return $query;
+    }
+
     // TAMBAH DATA
 
     public function tambah_produk($data, $table)
