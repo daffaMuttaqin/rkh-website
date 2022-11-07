@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Agu 2022 pada 09.29
+-- Waktu pembuatan: 07 Nov 2022 pada 09.30
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -54,7 +54,7 @@ INSERT INTO `tb_produk` (`id`, `product_name`, `description`, `category`, `price
 (14, 'Cappuccino Tart', 'On Going', 'Cookies', '75000', 'Cappuccino_Tart_-_Copy.jpg', 0),
 (15, 'Choco Chip Almond', 'On Going', 'Cookies', '70000', 'Choco_Chip_Almond_-_Copy.jpg', 0),
 (16, 'Chui Kou So', 'On Going', 'Cookies', '65000', 'Chui_Kou_So.jpg', 0),
-(17, 'Pie Susu', 'On Going', 'Pie', '4000', 'Pie_susu_-_Copy1.jpeg', 0),
+(17, 'Pie Susu', 'On Going', 'Pie', '4000', 'Pie_susu_-_Copy.jpeg', 0),
 (18, 'Skippy Choco Ball', 'On Going', 'Cookies', '70000', 'Skippy_Choco_Ball_-_Copy3.jpg', 1),
 (19, 'Nastar Cup', 'On Going', 'Cookies', '70000', 'Nastar_Cup_-_Copy.jpg', 0),
 (20, 'Nastar Premium', 'On Going', 'Cookies', '80000', 'Nastra_Premium_-_Copy2.jpg', 1);
@@ -82,6 +82,66 @@ INSERT INTO `tb_produk_terlaris` (`id`, `product_name`, `description`, `category
 (1, 'Pie Buah', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop p', 'Brownies', 15000, 'kue33.jpg'),
 (2, 'Skippy Caramel', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', 'Brownies', 75000, 'kue3.jpg'),
 (4, 'Oreo Choco Ball', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Brownies', 75000, 'kue2.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_review`
+--
+
+CREATE TABLE `tb_review` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `review` varchar(500) NOT NULL,
+  `image_profile` varchar(128) NOT NULL,
+  `image_review` varchar(128) NOT NULL,
+  `posting_time` int(11) NOT NULL,
+  `favorite` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_review`
+--
+
+INSERT INTO `tb_review` (`id`, `name`, `review`, `image_profile`, `image_review`, `posting_time`, `favorite`) VALUES
+(3, 'Daffa Muttaqin', 'Kalo udah makan kue nya rasanya pingin disayang terus karna takut habis hehe', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'Kastengel_-_Copy2.jpg', 1660139673, 1),
+(4, 'Daffa Muttaqin', 'Baru buka tapi toko nya udah rame banget', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'logo.png', 1660447799, 0),
+(5, 'Abuy', 'Tes timoni', 'muka_abuy.jpg', 'IMG_0082_-_Copy1.JPG', 1660488704, 1),
+(8, 'Dimas', 'Seneng banget beli disini, pelayanannya ramah, kue nya juga enak', 'default.png', 'Screenshot_2022-07-31_2315021.png', 1660792532, 1),
+(9, 'Shofa', 'Terbaik banget deh rasa kue', 'default.png', 'DSC005021.JPG', 1660792652, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_review_detail`
+--
+
+CREATE TABLE `tb_review_detail` (
+  `id_review` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `review` varchar(500) NOT NULL,
+  `image_profile` varchar(128) NOT NULL,
+  `image_review` varchar(128) NOT NULL,
+  `posting_time` int(11) NOT NULL,
+  `favorite` int(1) NOT NULL,
+  `agree` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_review_detail`
+--
+
+INSERT INTO `tb_review_detail` (`id_review`, `id_product`, `name`, `review`, `image_profile`, `image_review`, `posting_time`, `favorite`, `agree`) VALUES
+(3, 6, 'Daffa Muttaqin', 'Kuenya enak banget asli', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'Kastengel_-_Copy3.jpg', 1660235008, 0, 1),
+(6, 8, 'Daffa Muttaqin', 'Variasi kue nya banyak banget', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'Chui_Kou_So.jpg', 1660375176, 0, 2),
+(7, 6, 'Daffa Muttaqin', 'Kue nya enak banget', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'IMG_0072_-_Copy.JPG', 1660451080, 0, 2),
+(8, 9, 'Abuy', 'Kue kesukaan selay ni', 'muka_abuy.jpg', 'IMG_0072_-_Copy1.JPG', 1660486377, 0, 1),
+(9, 10, 'Daffa Muttaqin', 'Kue nya enak betol nih', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp.png', 1667313478, 0, 1),
+(10, 14, 'Abuy', 'Kue nya ga ngebosenin, saran gua jangan beli satu hehe', 'muka_abuy.jpg', 'thumbsUp1.png', 1667314040, 0, 1),
+(11, 6, 'Daffa Muttaqin', 'Tes review, kue nya ga enak', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp2.png', 1667314395, 0, 1),
+(12, 6, 'Daffa Muttaqin', 'Lemonnya enak', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp3.png', 1667314584, 0, 2),
+(13, 12, 'Daffa Muttaqin', 'Asli sih kue nya enak banget', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp4.png', 1667558604, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -195,7 +255,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `is_active`) VALUE
 (4, 2, 'Tentang', 'user/tentang', 1),
 (5, 2, 'Profil', 'user/profil', 1),
 (6, 2, 'Edit Profil', 'user/edit', 0),
-(7, 2, 'Ubah Password', 'user/ubah_password', 0);
+(7, 2, 'Ubah Password', 'user/ubah_password', 0),
+(8, 2, 'Testimoni', 'user/testimoni', 1);
 
 --
 -- Indexes for dumped tables
@@ -212,6 +273,18 @@ ALTER TABLE `tb_produk`
 --
 ALTER TABLE `tb_produk_terlaris`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tb_review`
+--
+ALTER TABLE `tb_review`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tb_review_detail`
+--
+ALTER TABLE `tb_review_detail`
+  ADD PRIMARY KEY (`id_review`);
 
 --
 -- Indeks untuk tabel `user`
@@ -260,10 +333,22 @@ ALTER TABLE `tb_produk_terlaris`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_review`
+--
+ALTER TABLE `tb_review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_review_detail`
+--
+ALTER TABLE `tb_review_detail`
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
@@ -287,7 +372,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
