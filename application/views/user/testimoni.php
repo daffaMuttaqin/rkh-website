@@ -10,12 +10,12 @@
         <div class="relative w-full px-10 lg:px-20 lg:mt-20 mt-10 justify-items-center">
             <!-- <h1 class="font-montserrat my-5 lg:mt-20 text-xl lg:text-4xl text-center font-bold">Testimoni</h1> -->
 
-            <div class="w-full mt-10 lg:bg-gray-50 rounded-xl lg:pl-9 pb-5">
+            <div class="w-full mt-10 lg:bg-gray-50 rounded-xl lg:px-9 pb-1">
                 <div class="lg:text-xl text-lg font-montserrat font-bold mt-16 mb-5 text-amber-800">
                     Testimoni
                 </div>
 
-                <div class="grid lg:grid-cols-4 grid-cols-1 gap-x-2 gap-y-7">
+                <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 ">
 
                     <?php
                     $delay = 0;
@@ -23,29 +23,21 @@
 
                     <?php foreach ($review as $rv) : ?>
 
-                        <div class="card" data-aos-delay="<?= $delay; ?>" data-aos="fade-right">
-                            <div class="card-header mx-4 mt-4">
-                                <a href="#" blur-shadow-image="true">
-                                    <img class="w-auto rounded-lg h-72 m-auto" src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" alt="card image" />
+                        <figure class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-ss-lg md:border-e dark:bg-gray-800 dark:border-gray-700">
+                            <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
+                                <a blur-shadow-image="true">
+                                    <img class="w-auto rounded-lg h-72 m-auto" src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" />
                                 </a>
-                            </div>
-                            <div class="card-body">
-                                <p class="mb-3">
-                                    <?= $rv->review ?>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="flex">
-                                    <a href="#" class="avatar">
-                                        <img src="<?= base_url('assets/img/profil/') . $rv->image_profile ?>" alt="avatar" />
-                                    </a>
-                                    <div class="ml-3">
-                                        <span class="text-blue-gray-700 mb-0 font-bold"><?= $rv->name ?></span>
-                                        <p class="mb-0 text-xs">Diposting pada <?= date('d F Y', $rv->posting_time) ?></p>
-                                    </div>
+                                <p class="my-4"><?= $rv->review ?></p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center ">
+                                <img class="rounded-full w-9 h-9" src="<?= base_url('assets/img/profil/') . $rv->image_profile ?>" alt="profile picture">
+                                <div class="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
+                                    <div><?= $rv->name ?></div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400 ">Diposting pada <?= date('d F Y', $rv->posting_time) ?></div>
                                 </div>
-                            </div>
-                        </div>
+                            </figcaption>
+                        </figure>
                         <?php $delay += 100; ?>
                     <?php endforeach ?>
 

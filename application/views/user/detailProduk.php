@@ -60,7 +60,7 @@
                                     <?= $rvd->review ?>
                                 </p>
                                 <!-- Btn Modal -->
-                                <button data-modal-toggle="defaultModal<?= $rvd->id_review; ?>" class="pb-5">
+                                <button data-modal-target="defaultModal<?= $rvd->id_review; ?>" data-modal-toggle="defaultModal<?= $rvd->id_review; ?>" class="pb-5">
                                     <img class="w-20 h-20 rounded" src="<?= base_url('assets/img/testimoni/') . $rvd->image_review ?>" alt="Large avatar">
                                 </button>
                                 <hr>
