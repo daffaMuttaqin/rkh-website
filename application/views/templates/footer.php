@@ -79,7 +79,8 @@
 </script>
 
 <!-- FLOWBITE -->
-<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<!-- <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script> -->
 <!-- <script src="https://unpkg.com/flowbite@1.5.2/dist/flowbite.js"></script> -->
 
 <!-- TAILWIND MATERIAL -->

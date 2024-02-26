@@ -110,7 +110,7 @@
                     USER
              -->
             <div class="my-10 lg:mt-20">
-                <h1 class="font-montserrat lg:mb-5 text-base lg:text-2xl font-bold">User</h1>
+                <h1 class="font-montserrat lg:mb-5 text-base lg:text-2xl font-bold">Pengguna</h1>
 
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -120,10 +120,16 @@
                                     No
                                 </th>
                                 <th scope="col" class="py-3 px-6">
+                                    Kode Akun
+                                </th>
+                                <th scope="col" class="py-3 px-6">
                                     Nama
                                 </th>
                                 <th scope="col" class="py-3 px-6">
                                     Email
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Poin
                                 </th>
                                 <th scope="col" class="py-3 px-6 text-center">
                                     Role
@@ -150,10 +156,16 @@
                                         <?= $no++ ?>
                                     </td>
                                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <?= $usr->code_account ?>
+                                    </th>
+                                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <?= $usr->name ?>
                                     </th>
                                     <td class="py-4 px-6">
                                         <?= $usr->email ?>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <?= $usr->point ?>
                                     </td>
                                     <td class="py-4 px-6 text-center">
                                         <?= $usr->role_id ?>
@@ -162,7 +174,7 @@
                                         <?= $usr->is_active ?>
                                     </td>
                                     <td class="py-4 px-6 text-center">
-                                        <?= $usr->date_created ?>
+                                        <?= date('d F Y', $usr->date_created) ?>
                                     </td>
                                     <td class="py-4 px-6 text-center flex items-center justify-center">
                                         <a href="<?= base_url('admin/edit_user/') . $usr->id ?>">

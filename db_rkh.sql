@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Nov 2022 pada 09.30
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 7.4.29
+-- Waktu pembuatan: 26 Feb 2024 pada 05.49
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `tb_produk` (
   `price` varchar(256) NOT NULL,
   `product_image` varchar(128) NOT NULL,
   `favorite` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tb_produk`
@@ -72,7 +72,7 @@ CREATE TABLE `tb_produk_terlaris` (
   `category` varchar(128) NOT NULL,
   `price` int(11) NOT NULL,
   `product_image` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tb_produk_terlaris`
@@ -97,7 +97,7 @@ CREATE TABLE `tb_review` (
   `image_review` varchar(128) NOT NULL,
   `posting_time` int(11) NOT NULL,
   `favorite` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tb_review`
@@ -126,7 +126,7 @@ CREATE TABLE `tb_review_detail` (
   `posting_time` int(11) NOT NULL,
   `favorite` int(1) NOT NULL,
   `agree` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tb_review_detail`
@@ -141,7 +141,8 @@ INSERT INTO `tb_review_detail` (`id_review`, `id_product`, `name`, `review`, `im
 (10, 14, 'Abuy', 'Kue nya ga ngebosenin, saran gua jangan beli satu hehe', 'muka_abuy.jpg', 'thumbsUp1.png', 1667314040, 0, 1),
 (11, 6, 'Daffa Muttaqin', 'Tes review, kue nya ga enak', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp2.png', 1667314395, 0, 1),
 (12, 6, 'Daffa Muttaqin', 'Lemonnya enak', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp3.png', 1667314584, 0, 2),
-(13, 12, 'Daffa Muttaqin', 'Asli sih kue nya enak banget', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp4.png', 1667558604, 0, 0);
+(13, 12, 'Daffa Muttaqin', 'Asli sih kue nya enak banget', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp4.png', 1667558604, 0, 0),
+(14, 6, 'A buy', 'Enak beut', 'muka_abuy.jpg', '', 1708524389, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -151,25 +152,30 @@ INSERT INTO `tb_review_detail` (`id_review`, `id_product`, `name`, `review`, `im
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
+  `code_account` varchar(128) NOT NULL,
   `name` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL,
+  `point` int(10) NOT NULL,
+  `referral_code` varchar(128) NOT NULL,
   `role_id` int(11) NOT NULL,
   `is_active` int(1) NOT NULL,
   `date_created` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(3, 'Daffa Muttaqin', 'daffamuttaqin09@gmail.com', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', '$2y$10$4/Da9h2cl.VjjjALLJZwK.UHcSSWJM.l5GaYQKlzGPgiI84AXmxrm', 1, 1, 1657887979),
-(4, 'Abuy', 'abuy@upi.edu', 'muka_abuy.jpg', '$2y$10$eXa/rFpAM1garN.tR882beoi5GX2N9oWe.8wdhqB0EvCd9WPv9ZaW', 2, 1, 1657890030),
-(6, 'Pon ', 'pon@upi.edu', 'coach_emot.jpg', '$2y$10$CoUxz3.GqZfEGe.K3Q.FweYXUOBx/p.oD0W4t67sECH109YEPKtcS', 2, 1, 1658653709),
-(11, 'Shofa', 'shofa@pancabudi.ac.id', 'default.png', '$2y$10$DW91kOYPqsUr0MMyZVSseesD/dfXdyMaC1xH9aaTyi.KOLrNTRD7.', 2, 1, 1659267010),
-(12, 'Dimas', 'dimas@upi.edu', 'default.png', '$2y$10$eKO6gIWEXhbVoXUGT3qIdOx1l28DDHUILYZY47.jk5MK7j8Xh0wSq', 2, 1, 1659325105);
+INSERT INTO `user` (`id`, `code_account`, `name`, `email`, `image`, `password`, `point`, `referral_code`, `role_id`, `is_active`, `date_created`) VALUES
+(3, '99999', 'Daffa Muttaqin', 'daffamuttaqin09@gmail.com', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', '$2y$10$4/Da9h2cl.VjjjALLJZwK.UHcSSWJM.l5GaYQKlzGPgiI84AXmxrm', 16, '0', 1, 1, 1657887979),
+(4, '88888', 'A buy', 'abuy@upi.edu', 'muka_abuy.jpg', '$2y$10$eXa/rFpAM1garN.tR882beoi5GX2N9oWe.8wdhqB0EvCd9WPv9ZaW', 20, '0', 2, 1, 1657890030),
+(6, '77777', 'Pon ', 'pon@upi.edu', 'coach_emot.jpg', '$2y$10$CoUxz3.GqZfEGe.K3Q.FweYXUOBx/p.oD0W4t67sECH109YEPKtcS', 0, '0', 2, 1, 1658653709),
+(11, '66666', 'Shofa', 'shofa@pancabudi.ac.id', 'default.png', '$2y$10$DW91kOYPqsUr0MMyZVSseesD/dfXdyMaC1xH9aaTyi.KOLrNTRD7.', 0, '0', 2, 1, 1659267010),
+(12, '55555', 'Dimas', 'dimas@upi.edu', 'default.png', '$2y$10$eKO6gIWEXhbVoXUGT3qIdOx1l28DDHUILYZY47.jk5MK7j8Xh0wSq', 0, '0', 2, 0, 1659325105),
+(14, '042178', 'Pilmon Ginting', 'pilmon@gmail.com', 'default.png', '$2y$10$Ty.0HOhZrTwpwzc9HDOWIeTNnLBGJKG5/bZUio5XtCWe6eU3rpZqe', 2, '99999', 2, 1, 1708767619),
+(34, '401852', 'Kai', 'kai@gmail.com', 'default.png', '$2y$10$HfVE/V9468.iwgRzchXqA.cJa19LPHdwSZp7IFFiroZRWZccoCJyy', 0, '99999', 2, 1, 1708850720);
 
 -- --------------------------------------------------------
 
@@ -181,7 +187,7 @@ CREATE TABLE `user_access_menu` (
   `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user_access_menu`
@@ -201,7 +207,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 CREATE TABLE `user_menu` (
   `id` int(11) NOT NULL,
   `menu` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user_menu`
@@ -220,7 +226,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
   `role` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user_role`
@@ -242,7 +248,7 @@ CREATE TABLE `user_sub_menu` (
   `title` varchar(128) NOT NULL,
   `url` varchar(128) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user_sub_menu`
@@ -342,13 +348,13 @@ ALTER TABLE `tb_review`
 -- AUTO_INCREMENT untuk tabel `tb_review_detail`
 --
 ALTER TABLE `tb_review_detail`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`

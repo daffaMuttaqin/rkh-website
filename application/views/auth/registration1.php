@@ -69,6 +69,19 @@
                                     <?= form_error('password') ?>
                                 </small>
 
+                                <!-- Kode Referral -->
+                                <div class="relative mt-6">
+                                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-500 dark:text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <input type="text" name="referral_code" id="referral_code" value="<?= set_value('referral_code'); ?>" class="bg-white border border-white shadow-xl text-gray-900 text-base rounded-full focus:ring-amber-500 focus:border-amber-500 block w-80 h-14 pl-14 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-amber-500 dark:focus:border-amber-500" placeholder="Kode Referral">
+                                </div>
+                                <small class="text-red-600 font-semibold font-montserrat text-left duration-300">
+                                    <?= form_error('') ?>
+                                </small>
+
                                 <div class="flex flex-row w-full mt-4 justify-center">
                                     <div class="text-gray-600 text-sm font-montserrat font-semibold">Sudah punya akun? <a href="<?= base_url('auth') ?>" class=" text-gray-600 font-bold"> Masuk</a> </div>
                                 </div>

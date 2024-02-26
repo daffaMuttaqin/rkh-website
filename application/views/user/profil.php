@@ -47,6 +47,22 @@
 
                     <div class="flex flex-col p-5 space-y-3">
                         <div>
+                            <h1 class="font-montserrat font-bold text-gray-600 text-lg">Kode Akun</h1>
+                            <button data-popover-target="popover-kode-akun" type="button" class="font-montserrat italic cursor-default"> <?= $user['code_account'] ?> </button>
+
+                            <!-- Pop Over -->
+                            <div data-popover id="popover-kode-akun" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                    <h3 class="font-semibold text-gray-900 dark:text-white">Menambah Poin</h3>
+                                </div>
+                                <div class="px-3 py-2">
+                                    <p>Jika pengguna baru memasukkan <span class="font-bold">kode akun</span> anda saat melakukan pendaftaran maka anda akan mendapatkan <span class="font-bold">1 point</span></p>
+                                </div>
+                                <div data-popper-arrow></div>
+                            </div>
+
+                        </div>
+                        <div>
                             <h1 class="font-montserrat font-bold text-gray-600 text-lg">Nama</h1>
                             <span class="font-montserrat"> <?= $user['name'] ?> </span>
                         </div>
@@ -58,6 +74,11 @@
                             <h1 class="font-montserrat font-bold text-gray-600 text-lg">Member</h1>
                             <span class="font-montserrat"> Member mulai dari <?= date('d F Y', $user['date_created']) ?> </span>
                         </div>
+                        <div>
+                            <h1 class="font-montserrat font-bold text-gray-600 text-lg">Poin</h1>
+                            <span class="font-montserrat"> <?= $user['point'] ?> </span>
+                        </div>
+
                     </div>
 
                 </div>
