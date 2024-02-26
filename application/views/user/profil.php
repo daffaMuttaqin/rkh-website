@@ -41,8 +41,15 @@
                     </div>
                 </div>
                 <div class="flex items-center pb-10">
-                    <div class="p-3 ml-5 rounded bg-gray-100">
-                        <img class="mb-3 w-56 h-56 rounded-lg" src=" <?= base_url('assets/img/profil/') . $user['image'] ?>" alt="Bonnie image" />
+                    <div class="flex flex-col ml-5">
+                        <div class="p-3 rounded bg-gray-100">
+                            <img class="w-36 h-36 rounded-lg" src=" <?= base_url('assets/img/profil/') . $user['image'] ?>" alt="Bonnie image" />
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <h1 class="font-montserrat font-bold text-gray-600 text-lg">Poin</h1>
+                            <span class="font-montserrat text-amber-300 font-bold text-3xl"> <?= $user['point'] ?> </span>
+                        </div>
                     </div>
 
                     <div class="flex flex-col p-5 space-y-3">
@@ -73,10 +80,6 @@
                         <div>
                             <h1 class="font-montserrat font-bold text-gray-600 text-lg">Member</h1>
                             <span class="font-montserrat"> Member mulai dari <?= date('d F Y', $user['date_created']) ?> </span>
-                        </div>
-                        <div>
-                            <h1 class="font-montserrat font-bold text-gray-600 text-lg">Poin</h1>
-                            <span class="font-montserrat"> <?= $user['point'] ?> </span>
                         </div>
 
                     </div>
