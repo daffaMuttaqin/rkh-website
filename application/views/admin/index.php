@@ -25,7 +25,7 @@
             <?= $this->session->flashdata('message') ?>
 
             <!-- Acc Review User -->
-            <div class="my-10 lg:mt-20">
+            <div class="my-10 lg:mt-10">
                 <h1 class="lg:mb-5 font-montserrat text-base lg:text-2xl font-bold">Review Belum Disetujui Admin</h1>
 
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -113,10 +113,16 @@
                 <h1 class="font-montserrat lg:mb-5 text-base lg:text-2xl font-bold">Pengguna</h1>
 
                 <div class="flex justify-between">
+                    <!-- TOMBOL TAMBAH POINT -->
                     <div>
-                        <button type="button" class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Tambah Poin</button>
+                        <button data-modal-target="modal-tambah-point" data-modal-toggle="modal-tambah-point" type="button" class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Tambah Poin</button>
+
+                        <!-- TOMBOL DAPAT POINT -->
+                        <button type="button" class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Dapatkan Diskon</button>
                     </div>
-                    <div>Search</div>
+
+                    <!-- SEARCH JIKA ADA -->
+                    <div></div>
                 </div>
 
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -453,6 +459,59 @@
 
     <!-- MODAL -->
 
+    <!-- MODAL TAMBAH POINT -->
+    <div id="modal-tambah-point" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Tambah Poin
+                    </h3>
+                    <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-tambah-point">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5">
+                    <form class="space-y-4" action="<?= base_url('admin/tambah_poin'); ?>" method="post">
+                        <!-- KODE AKUN -->
+                        <div>
+                            <label for="code_account" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Akun</label>
+                            <input type="text" name="code_account" id="code_account" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Masukkan Kode Akun Pengguna" required />
+                        </div>
+
+                        <!-- JUMLAH POIN -->
+                        <div>
+                            <label for="point" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Poin:</label>
+                            <div class="relative flex items-center max-w-[8rem]">
+                                <button type="button" id="decrement-button" data-input-counter-decrement="point" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                    </svg>
+                                </button>
+                                <input type="text" id="point" name="point" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="999" required />
+                                <button type="button" id="increment-button" data-input-counter-increment="point" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL TAMBAH POINT -->
+
+
     <!-- MODAL TAMBAH SEMUA PRODUK -->
     <div id="modal_semua_produk" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
         <div class="relative p-4 w-full max-w-md h-full md:h-auto">
@@ -517,5 +576,7 @@
             </div>
         </div>
     </div>
+
+    <!-- END MODAL TAMBAH SEMUA PRODUK -->
 
     </div>
