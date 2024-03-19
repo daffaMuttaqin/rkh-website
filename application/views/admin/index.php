@@ -14,9 +14,9 @@
 
 <body class="w-full h-full" id="up">
     <!-- TETIMONI FLOATING ICON -->
-    <a href="<?= base_url('admin/tambah_pesanan') ?>" class="fixed flex items-center z-50 lg:bottom-24 bottom-40 right-0 lg:mr-8 lg:mb-8 mr-4 mb-4 duration-300" data-aos="fade-down">
-        <img src=" <?= base_url('/assets/img/checklist.png') ?> " alt="" class="w-16 md:w-16 lg:w-20 hover:scale-110 duration-300">
-    </a>
+    <!-- <a href="?= base_url('admin/tambah_pesanan') ?>" class="fixed flex items-center z-50 lg:bottom-24 bottom-40 right-0 lg:mr-8 lg:mb-8 mr-4 mb-4 duration-300" data-aos="fade-down">
+        <img src=" ?= base_url('/assets/img/checklist.png') ?> " alt="" class="w-16 md:w-16 lg:w-20 hover:scale-110 duration-300">
+    </a> -->
     <div class="pt-24">
         <div class="relative w-full px-10 lg:px-20 mt-20 justify-items-center">
 

@@ -218,7 +218,7 @@ class User extends CI_Controller
         if ($image_review = '') {
         } else {
             $config['upload_path'] = './assets/img/testimoni/';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif|mp4';
 
             $this->load->library('upload', $config);
 

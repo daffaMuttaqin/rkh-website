@@ -48,8 +48,19 @@
 
                         <div class="text-center mt-3">
                             <h1 class="font-montserrat font-bold text-gray-600 text-lg">Poin</h1>
-                            <span class="font-montserrat text-amber-300 font-bold text-3xl"> <?= $user['point'] ?> </span>
+                            <button data-popover-target="popover-point" data-popover-placement="bottom-end" type="button" class="font-montserrat text-amber-300 font-bold text-3xl cursor-default"> <?= $user['point'] ?> </button>
                         </div>
+                    </div>
+
+                    <!-- Pop Over Point -->
+                    <div data-popover id="popover-point" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
+                        <div class="p-3 space-y-2">
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Cara mendapatkan poin</h3>
+                            <p>Ketika anda melakukan pembelian kue, maka 1 kue nya akan dihitung sebagai 1 poin.</p>
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Kegunaan Poin</h3>
+                            <p>Poin dapat digunakan untuk ditukarkan menjadi diskon 10%. Jumlah minimal poin untuk ditukarkan menjadi diskon 10% adalah 10 poin.</p>
+                        </div>
+                        <div data-popper-arrow></div>
                     </div>
 
                     <div class="flex flex-col p-5 space-y-3">
@@ -57,13 +68,13 @@
                             <h1 class="font-montserrat font-bold text-gray-600 text-lg">Kode Akun</h1>
                             <button data-popover-target="popover-kode-akun" type="button" class="font-montserrat italic cursor-default"> <?= $user['code_account'] ?> </button>
 
-                            <!-- Pop Over -->
+                            <!-- Pop Over Code Akun-->
                             <div data-popover id="popover-kode-akun" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                 <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                     <h3 class="font-semibold text-gray-900 dark:text-white">Menambah Poin</h3>
                                 </div>
                                 <div class="px-3 py-2">
-                                    <p>Jika pengguna baru memasukkan <span class="font-bold">kode akun</span> anda saat melakukan pendaftaran maka anda akan mendapatkan <span class="font-bold">1 point</span></p>
+                                    <p>Jika <span class="font-bold">pengguna baru</span> memasukkan <span class="font-bold">kode akun</span> anda saat melakukan pendaftaran maka anda akan mendapatkan <span class="font-bold">1 poin</span></p>
                                 </div>
                                 <div data-popper-arrow></div>
                             </div>
