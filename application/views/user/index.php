@@ -109,15 +109,15 @@
                 <?php foreach ($produk as $pdk) : ?>
                     <!-- Produk 1 -->
                     <div class="max-w-sm bg-white rounded-lg shadow-md" data-aos-delay="<?= $delay; ?>" data-aos="fade-right">
-                        <a href="#">
+                        <div>
                             <div class="w-full h-96 m-auto">
                                 <img class="rounded-lg w-full h-full m-auto" src=" <?= base_url('assets/img/produk/') . $pdk->product_image ?> " />
                             </div>
-                        </a>
+                        </div>
                         <div class="px-5 py-5">
-                            <a href="#">
+                            <div>
                                 <h5 class="mb-3 text-xl font-semibold font-montserrat tracking-tight text-gray-900"><?= $pdk->product_name ?></h5>
-                            </a>
+                            </div>
 
                             <div class="flex justify-between items-center mt-4 mb-5">
                                 <span class="text-2xl font-bold text-gray-900">Rp. <?= number_format($pdk->price, 0, ',', '.')  ?></span>

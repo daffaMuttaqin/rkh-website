@@ -51,9 +51,9 @@
                                     <p class="text-xs">Diposting pada <?= date('d F Y', $rvd->posting_time) ?></p>
                                 </div>
                                 <div class="flex items-center pb-2">
-                                    <a href="#" class="avatar">
+                                    <div class="avatar">
                                         <img class="w-10 h-10 rounded-full" src="<?= base_url('assets/img/profil/') . $rvd->image_profile ?>" alt="Rounded avatar">
-                                    </a>
+                                    </div>
                                     <span class="text-gray-700 mb-0 font-bold ml-2"><?= $rvd->name ?></span>
                                 </div>
                                 <p class="mb-2 font-montserrat">
@@ -61,7 +61,12 @@
                                 </p>
                                 <!-- Btn Modal -->
                                 <button data-modal-target="defaultModal<?= $rvd->id_review; ?>" data-modal-toggle="defaultModal<?= $rvd->id_review; ?>" class="pb-5">
-                                    <img class="w-20 h-20 rounded" src="<?= base_url('assets/img/testimoni/') . $rvd->image_review ?>" alt="Large avatar">
+                                    <!-- <img class="w-20 h-20 rounded" src="?= base_url('assets/img/testimoni/') . $rvd->image_review ?>" alt=""> -->
+                                    <video class="w-20 h-20 rounded" loop muted autoplay poster="<?= base_url('assets/img/testimoni/') . $rvd->image_review ?>">
+                                        <source src="<?= base_url('assets/img/testimoni/') . $rvd->image_review ?>" type="video/webm">
+                                        <source src="<?= base_url('assets/img/testimoni/') . $rvd->image_review ?>" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                 </button>
                                 <hr>
                             </div>
@@ -86,8 +91,26 @@
                                             </button>
                                         </div>
                                         <!-- Modal body -->
-                                        <div class="w-96 h-96 m-auto mt-2">
-                                            <img class="rounded " src="<?= base_url('assets/img/testimoni/') . $rvd->image_review ?>" alt="Large avatar">
+                                        <div class="lg:w-96 w-full lg:h-96 h-full m-auto mt-2">
+                                            <?php
+                                            $media = $rvd->image_review;
+                                            $ext = substr($media, -3);
+                                            $baseUrl = base_url('assets/img/testimoni/');
+
+                                            if ($ext == 'jpg') {
+                                                echo '<img class="rounded" src="' . $baseUrl . $rvd->image_review . '">';
+                                            } else if ($ext == 'png') {
+                                                echo '<img class="rounded" src="' . $baseUrl . $rvd->image_review . '">';
+                                            } else if ($ext == 'peg') {
+                                                echo '<img class="rounded" src="' . $baseUrl . $rvd->image_review . '">';
+                                            } else {
+                                                echo '<video class="rounded" controls>';
+                                                echo '<source src="' . $baseUrl . $rvd->image_review . '" type="video/webm">';
+                                                echo '<source src="' . $baseUrl . $rvd->image_review . '" type="video/mp4">';
+                                                echo 'Maaf, browser Anda tidak mendukung tag video.';
+                                                echo '</video>';
+                                            }
+                                            ?>
                                         </div>
                                         <div class="w-full pb-4">
                                             <div class="pb-2 pt-5">

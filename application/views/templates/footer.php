@@ -5,12 +5,10 @@
                 <img src="<?php echo base_url('assets/img/logo.png') ?>" alt="Adaro Agro" class="h-20 m-auto pb-2">
                 <div class="flex m-autu justify-center mt-4">
                     <a href="https://www.instagram.com/rumahkuehaviyya/">
-                        <img src="https://media.discordapp.net/attachments/938374277751795743/938375721427021824/unknown.png" alt="Instagram" class="w-8 mx-5 hover:w-9 duration-200">
+                        <img src="<?= base_url('assets/img/icon/instagram.png') ?>" alt="Instagram" class="h-8 mx-5 hover:scale-110 duration-200">
                     </a>
-                    <a href="#">
-                        <img src="https://media.discordapp.net/attachments/938374277751795743/938375720827244594/unknown.png" alt="Whatsapp" class="w-8 scale-150 mt-1 mx-5 hover:w-9 duration-200">
-                        <!-- <img src="<? // echo base_url('assets/img/whatsapp.png') 
-                                        ?>" alt="Facebook" class="w-8 mx-5 hover:w-9 duration-200"> -->
+                    <a href="https://api.whatsapp.com/send?phone=6285156277582">
+                        <img src="<?= base_url('assets/img/icon/whatsapp.png') ?>" alt="Whatsapp" class="h-8 scale-125  mt-1 mx-5 hover:scale-150 duration-200">
                     </a>
                 </div>
             </div>
@@ -28,26 +26,26 @@
             <div class="mt-14  w-fit">
                 <div class="grid grid-cols-5 grid-flow-row gap-1">
                     <div class="justify-self-start">
-                        <img src="https://media.discordapp.net/attachments/938374277751795743/938375722127482910/unknown.png" alt="Location" class="w-6 m-auto">
+                        <img src="<?= base_url('assets/img/icon/location.png') ?>" alt="Location" class="w-6 m-auto">
                     </div>
                     <div class="font-montserrat font-normal text-sm text-left col-span-4">
                         Jl. Ampera I No.28a, Sei Sikambing C. II, Kec. Medan Helvetia, Kota Medan, Sumatera Utara 20123
                     </div>
                     <div class="justify-self-start">
-                        <img src="https://media.discordapp.net/attachments/938374277751795743/938375720827244594/unknown.png" alt="Whatsapp" class="w-8 scale-110 m-auto">
+                        <img src="<?= base_url('assets/img/icon/whatsapp.png') ?>" alt="Whatsapp" class="w-10 -ml-1 scale-110 m-auto">
                     </div>
                     <div class="font-montserrat font-normal text-sm text-left col-span-4">
-                        +62 878 8810 3954
+                        +62 851 5627 7582
                     </div>
                     <div class="justify-self-start">
-                        <img src="https://media.discordapp.net/attachments/938374277751795743/938375721427021824/unknown.png" alt="Instagram" class="w-6 m-auto">
+                        <img src="<?= base_url('assets/img/icon/instagram.png') ?>" alt="Instagram" class="w-6 m-auto">
                     </div>
                     <div class="font-montserrat font-normal text-sm text-left col-span-4">
                         rumahkuehaviyya
                     </div>
                     <div></div>
                     <div class="text-white font-montserrat font-normal text-sm text-left col-span-4 hover:scale-110 duration-300">
-                        <a href="https://maps.app.goo.gl/F7GsJAVotwxCPaoW8">
+                        <a href="https://maps.app.goo.gl/DpXtbbfFnw8djSw99">
                             <div>MAP & DIRECTION</div>
                             <div class="bg-white w-full inset-0 h-1 rounded-lg"></div>
                         </a>

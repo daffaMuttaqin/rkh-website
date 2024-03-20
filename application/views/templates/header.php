@@ -225,7 +225,7 @@
             <!-- FLOATING ICON WHATSAPP AND UP -->
             <div class="h-full w-full">
                 <!-- WHATSAPP -->
-                <a href="https://api.whatsapp.com/send?phone=6287888103954" class="fixed z-50 bottom-0 right-0 lg:mr-8 lg:mb-8 mr-4 mb-4 hover:scale-110 duration-300">
+                <a href="https://api.whatsapp.com/send?phone=6285156277582" class="fixed z-50 bottom-0 right-0 lg:mr-8 lg:mb-8 mr-4 mb-4 hover:scale-110 duration-300">
                     <img src=" <?= base_url('/assets/img/whatsapp.png') ?> " alt="" class="w-16 md:w-16 lg:w-20">
                 </a>
 

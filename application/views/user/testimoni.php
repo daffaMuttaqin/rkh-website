@@ -25,9 +25,15 @@
 
                         <figure class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-ss-lg md:border-e dark:bg-gray-800 dark:border-gray-700">
                             <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                                <a blur-shadow-image="true">
-                                    <img class="w-auto rounded-lg h-72 m-auto" src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" />
-                                </a>
+                                <button blur-shadow-image="true">
+                                    <!-- <img class="w-auto rounded-lg h-72 m-auto" src="?= //base_url('assets/img/testimoni/') . $rv->image_review ?>" /> -->
+
+                                    <video class="w-auto rounded-lg h-72 m-auto" loop muted autoplay poster="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>">
+                                        <source src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" type="video/webm">
+                                        <source src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </button>
                                 <p class="my-4"><?= $rv->review ?></p>
                             </blockquote>
                             <figcaption class="flex items-center justify-center ">
