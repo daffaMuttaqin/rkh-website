@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Feb 2024 pada 05.49
+-- Waktu pembuatan: 20 Mar 2024 pada 07.27
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.1.25
 
@@ -108,7 +108,8 @@ INSERT INTO `tb_review` (`id`, `name`, `review`, `image_profile`, `image_review`
 (4, 'Daffa Muttaqin', 'Baru buka tapi toko nya udah rame banget', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'logo.png', 1660447799, 0),
 (5, 'Abuy', 'Tes timoni', 'muka_abuy.jpg', 'IMG_0082_-_Copy1.JPG', 1660488704, 1),
 (8, 'Dimas', 'Seneng banget beli disini, pelayanannya ramah, kue nya juga enak', 'default.png', 'Screenshot_2022-07-31_2315021.png', 1660792532, 1),
-(9, 'Shofa', 'Terbaik banget deh rasa kue', 'default.png', 'DSC005021.JPG', 1660792652, 1);
+(9, 'Shofa', 'Terbaik banget deh rasa kue', 'default.png', 'DSC005021.JPG', 1660792652, 1),
+(13, 'Abuy', 'Tes Video', 'muka_abuy.jpg', 'Desktop_2024_03_13_-_15_36_55_01.mp4', 1710820423, 0);
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,8 @@ INSERT INTO `tb_review_detail` (`id_review`, `id_product`, `name`, `review`, `im
 (11, 6, 'Daffa Muttaqin', 'Tes review, kue nya ga enak', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp2.png', 1667314395, 0, 1),
 (12, 6, 'Daffa Muttaqin', 'Lemonnya enak', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp3.png', 1667314584, 0, 2),
 (13, 12, 'Daffa Muttaqin', 'Asli sih kue nya enak banget', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'thumbsUp4.png', 1667558604, 0, 0),
-(14, 6, 'A buy', 'Enak beut', 'muka_abuy.jpg', '', 1708524389, 0, 1);
+(15, 8, 'Kai', 'Brownies sekat nya mantab', 'default.png', 'Habibi.png', 1709007818, 0, 1),
+(17, 6, 'Daffa Muttaqin', 'Tes Video', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', 'Desktop_2024_03_13_-_15_36_55_011.mp4', 1710825417, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -169,13 +171,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `code_account`, `name`, `email`, `image`, `password`, `point`, `referral_code`, `role_id`, `is_active`, `date_created`) VALUES
-(3, '99999', 'Daffa Muttaqin', 'daffamuttaqin09@gmail.com', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', '$2y$10$4/Da9h2cl.VjjjALLJZwK.UHcSSWJM.l5GaYQKlzGPgiI84AXmxrm', 16, '0', 1, 1, 1657887979),
-(4, '88888', 'A buy', 'abuy@upi.edu', 'muka_abuy.jpg', '$2y$10$eXa/rFpAM1garN.tR882beoi5GX2N9oWe.8wdhqB0EvCd9WPv9ZaW', 20, '0', 2, 1, 1657890030),
-(6, '77777', 'Pon ', 'pon@upi.edu', 'coach_emot.jpg', '$2y$10$CoUxz3.GqZfEGe.K3Q.FweYXUOBx/p.oD0W4t67sECH109YEPKtcS', 0, '0', 2, 1, 1658653709),
+(3, '99999', 'Daffa Muttaqin', 'daffamuttaqin09@gmail.com', 'Logo-UPI-Universitas-Pendidikan-Indonesia-Original-PNG.png', '$2y$10$4/Da9h2cl.VjjjALLJZwK.UHcSSWJM.l5GaYQKlzGPgiI84AXmxrm', 14, '0', 1, 1, 1657887979),
+(4, '88888', 'Abuy', 'abuy@upi.edu', 'default.png', '$2y$10$eXa/rFpAM1garN.tR882beoi5GX2N9oWe.8wdhqB0EvCd9WPv9ZaW', 0, '0', 2, 1, 1657890030),
+(6, '77777', 'Pon ', 'pon@upi.edu', 'default.png', '$2y$10$CoUxz3.GqZfEGe.K3Q.FweYXUOBx/p.oD0W4t67sECH109YEPKtcS', 1, '0', 2, 1, 1658653709),
 (11, '66666', 'Shofa', 'shofa@pancabudi.ac.id', 'default.png', '$2y$10$DW91kOYPqsUr0MMyZVSseesD/dfXdyMaC1xH9aaTyi.KOLrNTRD7.', 0, '0', 2, 1, 1659267010),
 (12, '55555', 'Dimas', 'dimas@upi.edu', 'default.png', '$2y$10$eKO6gIWEXhbVoXUGT3qIdOx1l28DDHUILYZY47.jk5MK7j8Xh0wSq', 0, '0', 2, 0, 1659325105),
-(14, '042178', 'Pilmon Ginting', 'pilmon@gmail.com', 'default.png', '$2y$10$Ty.0HOhZrTwpwzc9HDOWIeTNnLBGJKG5/bZUio5XtCWe6eU3rpZqe', 2, '99999', 2, 1, 1708767619),
-(34, '401852', 'Kai', 'kai@gmail.com', 'default.png', '$2y$10$HfVE/V9468.iwgRzchXqA.cJa19LPHdwSZp7IFFiroZRWZccoCJyy', 0, '99999', 2, 1, 1708850720);
+(14, '042178', 'Pilmon Ginting', 'pilmon@gmail.com', 'default.png', '$2y$10$Ty.0HOhZrTwpwzc9HDOWIeTNnLBGJKG5/bZUio5XtCWe6eU3rpZqe', 8, '99999', 2, 1, 1708767619),
+(34, '401852', 'Kai', 'kai@gmail.com', 'default.png', '$2y$10$HfVE/V9468.iwgRzchXqA.cJa19LPHdwSZp7IFFiroZRWZccoCJyy', 7, '99999', 2, 1, 1708850720),
+(35, '643580', 'Budi', 'budi@gmail.com', 'default.png', '$2y$10$wXyhNNUh3KL8KCrd2XKTy.8zfZvFCQpiYuEZjbkIQmF359Jv4H.7y', 0, '99999', 2, 1, 1709016303);
 
 -- --------------------------------------------------------
 
@@ -342,19 +345,19 @@ ALTER TABLE `tb_produk_terlaris`
 -- AUTO_INCREMENT untuk tabel `tb_review`
 --
 ALTER TABLE `tb_review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_review_detail`
 --
 ALTER TABLE `tb_review_detail`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
