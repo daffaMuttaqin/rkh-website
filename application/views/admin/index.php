@@ -79,7 +79,28 @@
                                         <?= $rvdd->review ?>
                                     </td>
                                     <td class="py-4 px-6 text-center">
-                                        <img class="w-20 h-20 rounded" src="<?= base_url('assets/img/testimoni/') . $rvdd->image_review ?>" alt="Large avatar">
+                                        <?php
+                                        $media = $rvdd->image_review;
+                                        $ext = substr($media, -3);
+                                        $baseUrl = base_url('assets/img/testimoni/');
+
+                                        if ($ext == 'jpg') {
+                                            echo '<img class="w-20 h-20 rounded" src="' . $baseUrl . $rvdd->image_review . '">';
+                                        } else if ($ext == 'JPG') {
+                                            echo '<img class="w-20 h-20 rounded" src="' . $baseUrl . $rvdd->image_review . '">';
+                                        } else if ($ext == 'png') {
+                                            echo '<img class="w-20 h-20 rounded" src="' . $baseUrl . $rvdd->image_review . '">';
+                                        } else if ($ext == 'peg') {
+                                            echo '<img class="w-20 h-20 rounded" src="' . $baseUrl . $rvdd->image_review . '">';
+                                        } else {
+                                            echo '<video class="w-20 h-20 rounded" controls loop muted autoplay>';
+                                            echo '<source src="' . $baseUrl . $rvdd->image_review . '" type="video/webm">';
+                                            echo '<source src="' . $baseUrl . $rvdd->image_review . '" type="video/mp4">';
+                                            echo 'Maaf, browser Anda tidak mendukung tag video.';
+                                            echo '</video>';
+                                        }
+                                        ?>
+
                                     </td>
                                     <td class="py-4 px-6 text-center">
                                         <?= date('d F Y', $rvdd->posting_time) ?>

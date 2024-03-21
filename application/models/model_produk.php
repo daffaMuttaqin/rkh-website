@@ -83,6 +83,13 @@ class Model_produk extends CI_Model
         $this->db->delete($table);
     }
 
+    public function hapus_data_file($where, $table, $file)
+    {
+        $this->db->where($where);
+        unlink("assets/img/testimoni/" . $file);
+        $this->db->delete($table);
+    }
+
     // DETAIL DATA
 
     public function detail_semua_produk($id)

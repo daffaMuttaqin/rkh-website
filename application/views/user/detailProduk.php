@@ -65,7 +65,7 @@
                                     <video class="w-20 h-20 rounded" loop muted autoplay poster="<?= base_url('assets/img/testimoni/') . $rvd->image_review ?>">
                                         <source src="<?= base_url('assets/img/testimoni/') . $rvd->image_review ?>" type="video/webm">
                                         <source src="<?= base_url('assets/img/testimoni/') . $rvd->image_review ?>" type="video/mp4">
-                                        Your browser does not support the video tag.
+                                        Maaf, browser Anda tidak mendukung tag video.
                                     </video>
                                 </button>
                                 <hr>
@@ -91,13 +91,15 @@
                                             </button>
                                         </div>
                                         <!-- Modal body -->
-                                        <div class="lg:w-96 w-full lg:h-96 h-full m-auto mt-2">
+                                        <div class="lg:w-96 w-full lg:h-auto h-full m-auto mt-2">
                                             <?php
                                             $media = $rvd->image_review;
                                             $ext = substr($media, -3);
                                             $baseUrl = base_url('assets/img/testimoni/');
 
                                             if ($ext == 'jpg') {
+                                                echo '<img class="rounded" src="' . $baseUrl . $rvd->image_review . '">';
+                                            } else if ($ext == 'JPG') {
                                                 echo '<img class="rounded" src="' . $baseUrl . $rvd->image_review . '">';
                                             } else if ($ext == 'png') {
                                                 echo '<img class="rounded" src="' . $baseUrl . $rvd->image_review . '">';
