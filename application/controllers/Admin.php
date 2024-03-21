@@ -35,7 +35,7 @@ class Admin extends CI_Controller
         $description    = $this->input->post('description');
         $category       = $this->input->post('category');
         $price          = $this->input->post('price');
-        $favorite          = $this->input->post('favorite');
+        // $favorite          = $this->input->post('favorite');
         $product_image  = $_FILES['product_image']['name'];
 
         if ($product_image = '') {
@@ -46,7 +46,7 @@ class Admin extends CI_Controller
             $this->load->library('upload', $config);
 
             if (!$this->upload->do_upload('product_image')) {
-                echo "Gambar gagal diupload";
+                echo "File gagal diupload";
             } else {
                 $product_image = $this->upload->data('file_name');
             }
@@ -58,7 +58,7 @@ class Admin extends CI_Controller
             'category'      => $category,
             'price'         => $price,
             'product_image' => $product_image,
-            'favorite'      => $favorite
+            'favorite'      => 0
         ];
 
         $this->model_produk->tambah_produk($data, 'tb_produk');
@@ -304,7 +304,9 @@ class Admin extends CI_Controller
     public function hapus_produk($id)
     {
         $where = array('id' => $id);
-        $this->model_produk->hapus_data($where, 'tb_produk');
+        $files = $this->db->get_where('tb_produk', $where)->row_array();
+        $file = $files['product_image'];
+        $this->model_produk->hapus_data_produk($where, 'tb_produk', $file);
         $this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
                     <svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
                     <span class="sr-only">Info</span>
@@ -332,7 +334,9 @@ class Admin extends CI_Controller
     public function hapus_testimoni($id)
     {
         $where = array('id' => $id);
-        $this->model_produk->hapus_data($where, 'tb_review');
+        $files = $this->db->get_where('tb_review', $where)->row_array();
+        $file = $files['image_review'];
+        $this->model_produk->hapus_data_file($where, 'tb_review', $file);
         $this->session->set_flashdata('message', '<div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
                     <svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
                     <span class="sr-only">Info</span>
