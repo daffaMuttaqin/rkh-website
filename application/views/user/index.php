@@ -70,17 +70,13 @@
 
             <div class="flex flex-col font-montserrat text-justify justify-between text-sm lg:text-base mt-4 lg:mt-0" data-aos="fade-down">
                 <div>
-                    Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi,
-                    dan tata letak. Maksud penggunaan lipsum adalah agar pengamat tidak terlalu berkonsentrasi kepada arti harfiah per kalimat, melainkan lebih kepada elemen desain
-                    dari teks yang dipresentasi.
+                    Selamat datang di "Rumah Kue Haviyya" - destinasi pilihan untuk pencinta makanan manis yang menggoda. Di tengah suasana yang hangat dan ramah, kami menyajikan aneka pilihan lezat dari kue-kue terbaik, membawa Anda ke dalam dunia rasa yang tak terlupakan.
                 </div>
 
                 <br>
 
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur.
+                    Bergaya sebagai rumah kue kecil yang menyambut, toko kami menawarkan pemandangan yang menenangkan dan sentuhan keakraban yang membuat pelanggan merasa seperti di rumah sendiri. Terletak di teras rumah kami yang lapang, kami telah menciptakan ruang yang indah untuk menikmati momen-momen manis bersama keluarga dan teman.
                 </div>
 
                 <br>

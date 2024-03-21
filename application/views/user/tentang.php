@@ -8,25 +8,25 @@
                 <h1 class="font-montserrat font-bold text-sm lg:text-base">Rumah Kue Haviyya</h1>
 
                 <p class="lg:mt-5 mt-2 leading-8  font-montserrat font-light text-sm text-justify lg:text-base">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    Selamat datang di "Rumah Kue Haviyya" - destinasi pilihan untuk pencinta makanan manis yang menggoda. Di tengah suasana yang hangat dan ramah, kami menyajikan aneka pilihan lezat dari kue-kue terbaik, membawa Anda ke dalam dunia rasa yang tak terlupakan.
                 </p>
 
                 <br>
 
                 <p class="leading-loose font-montserrat font-light text-sm text-justify lg:text-base">
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                    Bergaya sebagai rumah kue kecil yang menyambut, toko kami menawarkan pemandangan yang menenangkan dan sentuhan keakraban yang membuat pelanggan merasa seperti di rumah sendiri. Terletak di teras rumah kami yang lapang, kami telah menciptakan ruang yang indah untuk menikmati momen-momen manis bersama keluarga dan teman.
                 </p>
 
                 <br>
 
                 <p class="leading-loose font-montserrat font-light text-sm text-justify lg:text-base">
-                    Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics.
+                    Dari aroma menggoda brownies panggang hingga kue kering yang renyah, dan potongan pie yang lembut, setiap gigitan adalah perpaduan sempurna dari rasa dan kelezatan. Dibuat dengan cinta dan perhatian yang mendalam, setiap produk kami adalah hasil dari resep yang telah diuji berpuluh tahun dan bahan-bahan berkualitas terbaik.
                 </p>
 
                 <br>
 
                 <p class="leading-8 font-montserrat font-light text-sm text-justify lg:text-base">
-                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    Di "Rumah Kue Haviyya", kami tidak hanya menawarkan kue-kue yang lezat, tetapi juga pengalaman berbelanja yang istimewa. Dengan pelayanan yang ramah dan penuh perhatian, kami selalu siap membantu Anda menemukan pilihan yang sempurna untuk memuaskan selera Anda.<br>Jadi, mari bergabung dengan kami dan nikmati sensasi manis yang tak terlupakan di "Rumah Kue Haviyya". Suasana yang hangat, cita rasa yang menggoda, dan kebahagiaan yang sejati menanti Anda di setiap sudut toko kami. Ayo kunjungi kami dan mari kita berbagi kebahagiaan melalui setiap gigitan yang memikat.
                 </p>
 
                 <br>
@@ -42,7 +42,7 @@
                         <i class="fa-brands fa-fw fa-whatsapp text-2xl"></i>
                     </div>
                     <div class="font-montserrat font-light text-sm lg:text-base text-left lg:col-span-11 col-span-10">
-                        +62 851 7151 6102
+                        +62 851 5627 7582
                     </div>
                 </div>
             </div>
