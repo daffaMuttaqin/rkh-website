@@ -110,6 +110,11 @@ class User extends CI_Controller
                 } else {
                     echo $this->upload->display_errors();
                 }
+            } else {
+                $where = array('email' => $email);
+                $files = $this->db->get_where('user', $where)->row_array();
+                $new_image = $files['image'];
+                $this->db->set('image', $new_image);
             }
 
             $this->db->set('name', $name);

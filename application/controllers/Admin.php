@@ -122,7 +122,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer', $data);
     }
 
-
+    // UPDATE PRODUK
     public function update_semua_produk()
     {
         $data['semua_produk'] = $this->model_produk->tampil_data_semua_produk()->row_array();
@@ -143,12 +143,19 @@ class Admin extends CI_Controller
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('product_image')) {
-                $old_image = $data['tb_produk']['product_image'];
+                // $old_image = $data['product_image'];
+                $where = array('id' => $id);
+                $files = $this->db->get_where('tb_produk', $where)->row_array();
+                $old_image = $files['product_image'];
                 unlink(FCPATH . 'assets/img/produk/' . $old_image);
                 $new_image = $this->upload->data('file_name');
             } else {
                 echo $this->upload->display_errors();
             }
+        } else {
+            $where = array('id' => $id);
+            $files = $this->db->get_where('tb_produk', $where)->row_array();
+            $new_image = $files['product_image'];
         }
 
         $data = array(
