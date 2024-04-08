@@ -28,11 +28,27 @@
                                 <button data-modal-target="defaultModal<?= $rv->id; ?>" data-modal-toggle="defaultModal<?= $rv->id; ?>" blur-shadow-image="true">
                                     <!-- <img class="w-auto rounded-lg h-72 m-auto" src="?= //base_url('assets/img/testimoni/') . $rv->image_review ?>" /> -->
 
-                                    <video class="w-auto rounded-lg h-72 m-auto" loop muted autoplay poster="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>">
-                                        <source src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" type="video/webm">
-                                        <source src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" type="video/mp4">
+                                    <!-- <video class="w-auto rounded-lg h-72 m-auto" loop muted autoplay poster="?= base_url('assets/img/testimoni/') . $rv->image_review ?>">
+                                        <source src="?= base_url('assets/img/testimoni/') . $rv->image_review ?>" type="video/webm">
+                                        <source src="?= base_url('assets/img/testimoni/') . $rv->image_review ?>" type="video/mp4">
                                         Your browser does not support the video tag.
-                                    </video>
+                                    </video> -->
+
+                                    <?php
+                                    $media = $rv->image_review;
+                                    $ext = substr($media, -3);
+                                    $baseUrl = base_url('assets/img/testimoni/');
+
+                                    if ($ext == '') {
+                                        echo '<div class="w-auto rounded-lg m-auto"></div>';
+                                    } else {
+                                        echo '<video class="w-auto rounded-lg h-72 m-auto" loop muted autoplay poster="' . $baseUrl . $rv->image_review . '">';
+                                        echo '<source src="' . $baseUrl . $rv->image_review . '" type="video/webm">';
+                                        echo '<source src="' . $baseUrl . $rv->image_review . '" type="video/mp4">';
+                                        echo 'Maaf, browser Anda tidak mendukung tag video.';
+                                        echo '</video>';
+                                    }
+                                    ?>
                                 </button>
                                 <p class="my-4"><?= $rv->review ?></p>
                             </blockquote>
@@ -79,6 +95,8 @@
                                             echo '<img class="rounded" src="' . $baseUrl . $rv->image_review . '">';
                                         } else if ($ext == 'peg') {
                                             echo '<img class="rounded" src="' . $baseUrl . $rv->image_review . '">';
+                                        } else if ($ext == '') {
+                                            echo '<div></div>';
                                         } else {
                                             echo '<video class="rounded" controls>';
                                             echo '<source src="' . $baseUrl . $rv->image_review . '" type="video/webm">';
