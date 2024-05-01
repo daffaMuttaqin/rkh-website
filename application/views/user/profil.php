@@ -112,7 +112,11 @@
 
                     <div class="w-full p-3 flex flex-col justify-between shadow-lg rounded-xl text-center">
                         <div class="pb-2 m-auto">
-                            <img class="w-56 h-56 rounded" src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" alt="Large avatar">
+                            <video class="w-56 h-56 rounded" loop muted autoplay poster="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>">
+                                <source src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" type="video/webm">
+                                <source src="<?= base_url('assets/img/testimoni/') . $rv->image_review ?>" type="video/mp4">
+                                Maaf, browser Anda tidak mendukung tag video.
+                            </video>
                         </div>
                         <p class="mb-2 font-montserrat">
                             <?= $rv->review ?>
