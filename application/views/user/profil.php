@@ -40,10 +40,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="flex items-center pb-10">
-                    <div class="flex flex-col ml-5">
+                <div class="flex lg:flex-row flex-col items-center pb-10">
+                    <div class="flex flex-col lg:ml-5 ml-0">
                         <div class="p-3 rounded bg-gray-100">
-                            <img class="w-36 h-36 rounded-lg" src=" <?= base_url('assets/img/profil/') . $user['image'] ?>" alt="Bonnie image" />
+                            <!-- Foto profil -->
+                            <img class="w-36 h-36 rounded-lg" src=" <?= base_url('assets/img/profil/') . $user['image'] ?>" alt="Foto Profil" />
                         </div>
 
                         <div class="text-center mt-3">
@@ -63,6 +64,7 @@
                         <div data-popper-arrow></div>
                     </div>
 
+                    <!-- Data akun -->
                     <div class="flex flex-col p-5 space-y-3">
                         <div>
                             <h1 class="font-montserrat font-bold text-gray-600 text-lg">Kode Akun</h1>
