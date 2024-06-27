@@ -9,9 +9,28 @@ class Model_produk extends CI_Model
 
     // NAMPILIN DATA
 
+    // PRODUK
+    public function get_count_produk()
+    {
+        return $this->db->count_all('tb_produk');
+    }
     public function tampil_data_semua_produk()
     {
         return $this->db->get('tb_produk');
+    }
+
+    public function get_produk($limit, $start)
+    {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get('tb_produk');
+        return $query->result();
+    }
+    // END PRODUK
+
+    // USER
+    public function get_count_user()
+    {
+        return $this->db->count_all('user');
     }
 
     public function tampil_data_user()
@@ -19,19 +38,59 @@ class Model_produk extends CI_Model
         return $this->db->get('user');
     }
 
+    public function get_user($limit, $start)
+    {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get('user');
+        return $query->result();
+    }
+
+    // END GET USER
+
+    // REVIEW TOKO
+    public function get_count_testimoni_toko()
+    {
+        return $this->db->count_all('tb_review');
+    }
+
     public function tampil_data_review()
     {
         return $this->db->get('tb_review');
     }
 
-    public function tampil_data_review_detail()
+    public function get_testimoni_toko($limit, $start)
     {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get('tb_review');
+        return $query->result();
+    }
+    // END REVIEW TOKO
+
+    // TESTIMONI PRODUK
+    public function get_count_testimoni_produk()
+    {
+        return $this->db->count_all('tb_review_detail');
+    }
+
+    // public function tampil_data_review_detail()
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('tb_review_detail');
+    //     $this->db->join('tb_produk', 'tb_produk.id = tb_review_detail.id_product', 'left');
+    //     $query = $this->db->get();
+    //     return $query;
+    // }
+
+    public function get_testimoni_produk($limit, $start)
+    {
+        $this->db->limit($limit, $start);
         $this->db->select('*');
         $this->db->from('tb_review_detail');
         $this->db->join('tb_produk', 'tb_produk.id = tb_review_detail.id_product', 'left');
-        $query = $this->db->get();
+        $query = $this->db->get()->result();
         return $query;
     }
+    // END TESTIMONI PRODUK
 
     public function tampil_data_review_detail_acc()
     {

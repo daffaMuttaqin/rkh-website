@@ -20,9 +20,41 @@
     <div class="pt-24">
         <div class="relative w-full px-10 lg:px-20 mt-20 justify-items-center">
 
-            <h1 class="font-montserrat my-10 lg:my-20 text-xl lg:text-4xl text-center font-bold">Admin</h1>
+            <h1 class="font-montserrat my-10 lg:mt-20 lg:mb-10 text-xl lg:text-4xl text-center font-bold">Admin</h1>
 
             <?= $this->session->flashdata('message') ?>
+
+            <!-- NAVIGASI -->
+            <div class="lg:w-6/12 w-full lg:m-auto grid lg:grid-cols-2 grid-cols-1 text-center">
+                <div class="lg:px-2" data-aos="fade-right">
+                    <a href="#user">
+                        <button class="lg:w-full w-full mx-1 text-montserrat lg:text-xl text-base lg:p-4 p-2 my-1 m-auto bg-amber-800 rounded-xl text-white font-semibold hover:scale-105 duration-300">
+                            Pengguna
+                        </button>
+                    </a>
+                </div>
+                <div class="lg:px-2" data-aos="fade-left">
+                    <a href="#testimoni_toko">
+                        <button class="lg:w-full w-full mx-1 text-montserrat lg:text-xl text-base lg:p-4 p-2 my-1 m-auto bg-amber-800 rounded-xl text-white font-semibold hover:scale-105 duration-300">
+                            Testimoni Toko
+                        </button>
+                    </a>
+                </div>
+                <div class=" lg:px-2" data-aos="fade-up">
+                    <a href="#testimoni_produk">
+                        <button class="lg:w-full w-full mx-1 text-montserrat lg:text-xl text-base lg:p-4 p-2 my-1 m-auto bg-amber-800 rounded-xl text-white font-semibold hover:scale-105 duration-300">
+                            Testimoni Produk
+                        </button>
+                    </a>
+                </div>
+                <div class=" lg:px-2" data-aos="fade-up">
+                    <a href="#semua_produk">
+                        <button class="lg:w-full w-full mx-1 text-montserrat lg:text-xl text-base lg:p-4 p-2 my-1 m-auto bg-amber-800 rounded-xl text-white font-semibold hover:scale-105 duration-300">
+                            Semua Produk
+                        </button>
+                    </a>
+                </div>
+            </div>
 
             <!-- Acc Review User -->
             <div class="my-10 lg:mt-10">
@@ -130,6 +162,7 @@
                     TABEL
                     USER
              -->
+            <div id="user"></div>
             <div class="my-10 lg:mt-20">
                 <h1 class="font-montserrat lg:mb-5 text-base lg:text-2xl font-bold">Pengguna</h1>
 
@@ -250,13 +283,17 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="mt-4">
+                    <?php echo $pagination_user; ?>
+                </div>
             </div>
 
 
 
             <!-- TESTIMONI -->
+            <div id="testimoni_toko"></div>
             <div class="my-10 lg:mt-20">
-                <h1 class="lg:mb-5 font-montserrat text-base lg:text-2xl font-bold">Testimoni</h1>
+                <h1 class="lg:mb-5 font-montserrat text-base lg:text-2xl font-bold">Testimoni Toko</h1>
 
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -319,11 +356,15 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="mt-4">
+                    <?php echo $pagination_testimoni_toko; ?>
+                </div>
             </div>
 
             <!--    TESTIMONI
-                    DETAIL
+                    DETAIL / PRODUK
             -->
+            <div id="testimoni_produk"></div>
             <div class="my-10 lg:mt-20">
                 <h1 class="lg:mb-5 font-montserrat text-base lg:text-2xl font-bold">Testimoni Produk</h1>
 
@@ -391,12 +432,16 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="mt-4">
+                    <?php echo $pagination_testimoni_produk; ?>
+                </div>
             </div>
 
             <!-- 
                     SEMUA
                     PRODUK
             -->
+            <div id="semua_produk"></div>
             <div class="my-10 lg:mt-20">
                 <h1 class="lg:mb-5 font-montserrat text-base lg:text-2xl font-bold">Semua Produk</h1>
 
@@ -471,6 +516,9 @@
 
                         </tbody>
                     </table>
+                </div>
+                <div class="mt-4">
+                    <?php echo $pagination_produk; ?>
                 </div>
             </div>
 

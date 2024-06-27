@@ -16,11 +16,81 @@ class Admin extends CI_Controller
     }
     public function index()
     {
-        $data['review_detail'] = $this->model_produk->tampil_data_review_detail()->result();
+        // Menambahkan library pagination
+        $this->load->library('pagination');
+        $this->load->model('model_produk');
+
+        // Fungsi untuk konfigurasi paginasi dengan Tailwind CSS
+        function create_pagination_config($base_url, $total_rows, $query_string_segment)
+        {
+            $config['base_url'] = $base_url;
+            $config['total_rows'] = $total_rows;
+            $config['per_page'] = 10;
+            $config['page_query_string'] = TRUE;
+            $config['query_string_segment'] = $query_string_segment;
+            $config['reuse_query_string'] = TRUE;
+            $config['full_tag_open'] = '<nav><ul class="flex justify-center space-x-1">';
+            $config['full_tag_close'] = '</ul></nav>';
+            $config['attributes'] = ['class' => 'px-4 py-2 bg-white border border-gray-300 text-gray-500 hover:bg-gray-200 rounded-md duration-300'];
+            $config['first_link'] = 'First';
+            $config['last_link'] = 'Last';
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['prev_link'] = '&laquo;';
+            $config['prev_tag_open'] = '<li>';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&raquo;';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li><a href="#" class="px-4 py-2 bg-blue-700 text-white border border-blue-700 rounded-md">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+
+            return $config;
+        }
+
+        // Ambil halaman dari query string
+        $page_produk = ($this->input->get('page_produk')) ? $this->input->get('page_produk') : 0;
+        $page_user = ($this->input->get('page_user')) ? $this->input->get('page_user') : 0;
+        $page_testimoni_toko = ($this->input->get('page_testimoni_toko')) ? $this->input->get('page_testimoni_toko') : 0;
+        $page_testimoni_produk = ($this->input->get('page_testimoni_produk')) ? $this->input->get('page_testimoni_produk') : 0;
+
+        // Konfigurasi paginasi untuk user
+        $config_user = create_pagination_config(base_url('admin/index/user'), $this->model_produk->get_count_user(), 'page_user');
+        $this->pagination->initialize($config_user);
+        $data['semua_user'] = $this->model_produk->get_user($config_user['per_page'], $page_user);
+        $data['pagination_user'] = $this->pagination->create_links();
+        // End Konfigurasi
+
+        // Konfigurasi paginasi untuk TESTIMONI TOKO
+        $config_testimoni_toko = create_pagination_config(base_url('admin/index/testimoni_toko'), $this->model_produk->get_count_testimoni_toko(), 'page_testimoni_toko');
+        $this->pagination->initialize($config_testimoni_toko);
+        $data['review'] = $this->model_produk->get_testimoni_toko($config_testimoni_toko['per_page'], $page_testimoni_toko);
+        $data['pagination_testimoni_toko'] = $this->pagination->create_links();
+        // END PAGINASI TESTIMONI TOKO
+
+        // Konfigurasi paginasi untuk TESTIMONI PRODUK
+        $config_testimoni_produk = create_pagination_config(base_url('admin/index/testimoni_produk'), $this->model_produk->get_count_testimoni_produk(), 'page_testimoni_produk');
+        $this->pagination->initialize($config_testimoni_produk);
+        $data['review_detail'] = $this->model_produk->get_testimoni_produk($config_testimoni_produk['per_page'], $page_testimoni_produk);
+        $data['pagination_testimoni_produk'] = $this->pagination->create_links();
+        // END PAGINASI TESTIMONI PRODUK
+
+        // Konfigurasi paginasi untuk PRODUK
+        $config_produk = create_pagination_config(base_url('admin/index/produk'), $this->model_produk->get_count_produk(), 'page_produk');
+        $this->pagination->initialize($config_produk);
+        $data['semua_produk'] = $this->model_produk->get_produk($config_produk['per_page'], $page_produk);
+        $data['pagination_produk'] = $this->pagination->create_links();
+        // END PAGINASI PRODUK
+
+        // $data['review_detail'] = $this->model_produk->tampil_data_review_detail()->result();
         $data['review_detail_acc'] = $this->model_produk->tampil_data_review_detail_acc()->result();
-        $data['review'] = $this->model_produk->tampil_data_review()->result();
-        $data['semua_user'] = $this->model_produk->tampil_data_user()->result();
-        $data['semua_produk'] = $this->model_produk->tampil_data_semua_produk()->result();
+        // $data['review'] = $this->model_produk->tampil_data_review()->result();
+        // $data['semua_user'] = $this->model_produk->tampil_data_user()->result();
+        // $data['semua_produk'] = $this->model_produk->tampil_data_semua_produk()->result();
         $data['title'] = 'Admin';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('templates/header', $data);
